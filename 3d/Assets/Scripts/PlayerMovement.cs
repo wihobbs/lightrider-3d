@@ -7,6 +7,10 @@ public class PlayerMovement : MonoBehaviour
     Rigidbody rb;
     [SerializeField] float moveSpeed = 5.0f;
     [SerializeField] float jumpForce = 5.0f;
+    [SerializeField] KeyCode leftKey = KeyCode.A;
+    [SerializeField] KeyCode rightKey = KeyCode.D;
+    [SerializeField] KeyCode upKey = KeyCode.W;
+    [SerializeField] KeyCode downKey = KeyCode.S;
 
     // Start is called before the first frame update
     void Start()
@@ -17,13 +21,17 @@ public class PlayerMovement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        float horiInput = Input.GetAxis("Horizontal");
-        float vertInput = Input.GetAxis("Vertical");
-
-        UpdateVelocity(horiInput * this.moveSpeed,rb.velocity.y,vertInput * this.moveSpeed);
-
-        if(Input.GetButtonDown("Jump")){
-            UpdateVelocity(rb.velocity.x,this.jumpForce,rb.velocity.z);
+        if(Input.GetKey(this.leftKey)){
+            UpdateVelocity(-1*this.moveSpeed,this.rb.velocity.y,this.rb.velocity.z);
+        }
+        if(Input.GetKey(this.rightKey)){
+            UpdateVelocity(this.moveSpeed,this.rb.velocity.y,this.rb.velocity.z);
+        }
+        if(Input.GetKey(this.upKey)){
+            UpdateVelocity(this.rb.velocity.x,this.rb.velocity.y,this.moveSpeed);
+        }
+        if(Input.GetKey(this.downKey)){
+            UpdateVelocity(this.rb.velocity.x,this.rb.velocity.y,-1*this.moveSpeed);
         }
     }
 
