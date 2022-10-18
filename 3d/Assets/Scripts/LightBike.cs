@@ -4,8 +4,8 @@ using UnityEngine;
 
 public class LightBike : MonoBehaviour
 {
-    public WheelCollider F;
-    public WheelCollider R;
+    public WheelCollider[] F;
+    public WheelCollider[] R;
     public Vector2 motorTorque;
     public Vector2 brakeTorque;
     public float steerAngle = 10f;
@@ -20,10 +20,16 @@ public class LightBike : MonoBehaviour
     [SerializeField]
     private float currentSpeed;
     private Rigidbody rb;
-    // Start is called before the first frame update
+    public float gravityScale = 1.0f;
+    static float globalGravity = -9.8f;
+    public Vector2 MouseSensitivity;
+    Vector3 offset;
+    
+    // Start is called before the first frame update\
     void Start()
     {
         rb = GetComponent<Rigidbody>();
+
     }
 
     // Update is called once per frame
@@ -33,18 +39,28 @@ public class LightBike : MonoBehaviour
         
         currentSpeed = rb.velocity.magnitude;
         float veloComp = rb.velocity.magnitude > 35f ? Mathf.Clamp((40f - rb.velocity.magnitude) * 0.2f, 0f, 1f) : 1;
-        F.motorTorque = Mathf.Clamp(Input.GetAxis("Vertical"), 0f, 1f) * motorTorque.x * veloComp;
-        R.motorTorque = Mathf.Clamp(Input.GetAxis("Vertical"), 0f, 1f) * motorTorque.y * veloComp;
+        foreach (WheelCollider F in F)
+        {
+            F.motorTorque = Mathf.Clamp(Input.GetAxis("Vertical"), 0f, 1f) * motorTorque.x * veloComp;
+            F.brakeTorque = Mathf.Clamp(-Input.GetAxis("Vertical"), 0f, 1f) * brakeTorque.x;
+            F.steerAngle = currentSteer * steerAngle;
+        }
+        foreach (WheelCollider R in R) {
+            R.motorTorque = Mathf.Clamp(Input.GetAxis("Vertical"), 0f, 1f) * motorTorque.y * veloComp;
+            R.brakeTorque = Mathf.Clamp(-Input.GetAxis("Vertical"), 0f, 1f) * brakeTorque.y;
+        }
 
-        F.brakeTorque = Mathf.Clamp(-Input.GetAxis("Vertical"), 0f, 1f) * brakeTorque.x;
-        R.brakeTorque = Mathf.Clamp(-Input.GetAxis("Vertical"), 0f, 1f) * brakeTorque.y;
+        //transform.eulerAngles = new Vector3(transform.eulerAngles.x, transform.eulerAngles.y, currentSteer * leanCoef);
 
-        F.steerAngle = currentSteer * steerAngle;
-        transform.eulerAngles = new Vector3(transform.eulerAngles.x, transform.eulerAngles.y, currentSteer * leanCoef);
+        offset += new Vector3(Input.GetAxis("Mouse Y") * MouseSensitivity.y, Input.GetAxis("Mouse X") * MouseSensitivity.x, 0f);
     }
 
     void FixedUpdate(){
         cameraAxis.transform.position = Vector3.Lerp(cameraAxis.transform.position, transform.position, cameraPositionLerpRate * Time.fixedDeltaTime);
-        cameraAxis.transform.rotation = Quaternion.Lerp(cameraAxis.transform.rotation, transform.rotation, cameraRotationLerpRate * Time.fixedDeltaTime);
+        cameraAxis.transform.rotation = Quaternion.Lerp(cameraAxis.transform.rotation, transform.rotation * Quaternion.Euler(offset), cameraRotationLerpRate * Time.fixedDeltaTime);
+        Vector3 gravity = globalGravity * gravityScale * Vector3.up;
+        transform.eulerAngles = new Vector3(transform.eulerAngles.x, transform.eulerAngles.y, currentSteer * leanCoef);
+
+        rb.AddForce(gravity, ForceMode.Acceleration);
     }
 }
