@@ -24,6 +24,8 @@ public class LightBike : MonoBehaviour
     static float globalGravity = -9.8f;
     public Vector2 MouseSensitivity;
     Vector3 offset;
+    public string horizontalAxisName = "Horizontal1";
+    public string verticalAxisName = "Vertical1";
     
     // Start is called before the first frame update\
     void Start()
@@ -35,19 +37,19 @@ public class LightBike : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        currentSteer = Mathf.Lerp(currentSteer, Input.GetAxis("Horizontal"), steerLerpRate * Time.fixedDeltaTime);
+        currentSteer = Mathf.Lerp(currentSteer, Input.GetAxis(horizontalAxisName), steerLerpRate * Time.fixedDeltaTime);
         
         currentSpeed = rb.velocity.magnitude;
         float veloComp = rb.velocity.magnitude > 35f ? Mathf.Clamp((40f - rb.velocity.magnitude) * 0.2f, 0f, 1f) : 1;
         foreach (WheelCollider F in F)
         {
-            F.motorTorque = Mathf.Clamp(Input.GetAxis("Vertical"), 0f, 1f) * motorTorque.x * veloComp;
-            F.brakeTorque = Mathf.Clamp(-Input.GetAxis("Vertical"), 0f, 1f) * brakeTorque.x;
+            F.motorTorque = Mathf.Clamp(Input.GetAxis(verticalAxisName), 0f, 1f) * motorTorque.x * veloComp;
+            F.brakeTorque = Mathf.Clamp(-Input.GetAxis(verticalAxisName), 0f, 1f) * brakeTorque.x;
             F.steerAngle = currentSteer * steerAngle;
         }
         foreach (WheelCollider R in R) {
-            R.motorTorque = Mathf.Clamp(Input.GetAxis("Vertical"), 0f, 1f) * motorTorque.y * veloComp;
-            R.brakeTorque = Mathf.Clamp(-Input.GetAxis("Vertical"), 0f, 1f) * brakeTorque.y;
+            R.motorTorque = Mathf.Clamp(Input.GetAxis(verticalAxisName), 0f, 1f) * motorTorque.y * veloComp;
+            R.brakeTorque = Mathf.Clamp(-Input.GetAxis(verticalAxisName), 0f, 1f) * brakeTorque.y;
         }
 
         //transform.eulerAngles = new Vector3(transform.eulerAngles.x, transform.eulerAngles.y, currentSteer * leanCoef);
