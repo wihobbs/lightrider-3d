@@ -6,6 +6,12 @@ public class LightBike : MonoBehaviour
 {
     public WheelCollider[] F;
     public WheelCollider[] R;
+    public GameObject steerTransform;
+    public GameObject susFTransform;
+    public GameObject susRTransform;
+    public GameObject wheelFTransform;
+    public GameObject wheelRTransform;
+
     public Vector2 motorTorque;
     public Vector2 brakeTorque;
     public float steerAngle = 10f;
@@ -46,15 +52,19 @@ public class LightBike : MonoBehaviour
             F.motorTorque = Mathf.Clamp(Input.GetAxis(verticalAxisName), 0f, 1f) * motorTorque.x * veloComp;
             F.brakeTorque = Mathf.Clamp(-Input.GetAxis(verticalAxisName), 0f, 1f) * brakeTorque.x;
             F.steerAngle = currentSteer * steerAngle;
+            wheelFTransform.gameObject.transform.Rotate(-F.rpm / 60 * 360 * Time.deltaTime, 0, 0);
         }
         foreach (WheelCollider R in R) {
             R.motorTorque = Mathf.Clamp(Input.GetAxis(verticalAxisName), 0f, 1f) * motorTorque.y * veloComp;
             R.brakeTorque = Mathf.Clamp(-Input.GetAxis(verticalAxisName), 0f, 1f) * brakeTorque.y;
+            wheelRTransform.gameObject.transform.Rotate(-R.rpm / 60 * 360 * Time.deltaTime, 0, 0);
         }
 
         //transform.eulerAngles = new Vector3(transform.eulerAngles.x, transform.eulerAngles.y, currentSteer * leanCoef);
 
-        offset += new Vector3(Input.GetAxis("Mouse Y") * MouseSensitivity.y, Input.GetAxis("Mouse X") * MouseSensitivity.x, 0f);
+        offset += new Vector3(Input.GetAxis("Mouse Y") * MouseSensitivity.y * Input.GetAxis("Fire2"), Input.GetAxis("Mouse X") * MouseSensitivity.x * Input.GetAxis("Fire2"), 0f);
+        offset = offset * Input.GetAxis("Fire2");
+
     }
 
     void FixedUpdate(){
