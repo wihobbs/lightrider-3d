@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 705507994}
-  m_IndirectSpecularColor: {r: 245.6089, g: 263.97733, b: 323.61627, a: 1}
+  m_IndirectSpecularColor: {r: 246.10925, g: 264.4994, b: 324.27716, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -803,14 +803,14 @@ MonoBehaviour:
   susRTransform: {fileID: 0}
   wheelFTransform: {fileID: 901897123871289552}
   wheelRTransform: {fileID: 381107179}
-  motorTorque: {x: 1300, y: 0}
-  brakeTorque: {x: 0, y: 1000}
+  motorTorque: {x: 1000, y: 0}
+  brakeTorque: {x: 0, y: 600}
   steerAngle: 12
   cameraAxis: {fileID: 85845190}
   cameraPositionLerpRate: 22
   cameraRotationLerpRate: 5
   steerLerpRate: 0.8
-  leanCoef: -35
+  leanCoef: -30
   cameraLeanMultiplier: 7
   currentSteer: 0
   speedCompensation: 0.2
@@ -1152,7 +1152,7 @@ Transform:
   m_GameObject: {fileID: 1939041022}
   m_LocalRotation: {x: -0.017144581, y: -0, z: -0, w: 0.9998531}
   m_LocalPosition: {x: 0, y: 0.504, z: -0.06}
-  m_LocalScale: {x: 0.23, y: 0.4, z: 1.97}
+  m_LocalScale: {x: 0.44, y: 0.4, z: 1.97}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 783871852}
