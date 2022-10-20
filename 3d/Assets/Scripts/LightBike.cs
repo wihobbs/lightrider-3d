@@ -20,6 +20,8 @@ public class LightBike : MonoBehaviour
     public float cameraRotationLerpRate = 7f;
     public float steerLerpRate = 1f;
     public float leanCoef = -10f;
+    public float cameraLeanMultiplier = 0.5f;
+
     [SerializeField]
     private float currentSteer;
     public float speedCompensation = 0.2f;
@@ -69,9 +71,10 @@ public class LightBike : MonoBehaviour
 
     void FixedUpdate(){
         cameraAxis.transform.position = Vector3.Lerp(cameraAxis.transform.position, transform.position, cameraPositionLerpRate * Time.fixedDeltaTime);
-        cameraAxis.transform.rotation = Quaternion.Lerp(cameraAxis.transform.rotation, transform.rotation * Quaternion.Euler(offset), cameraRotationLerpRate * Time.fixedDeltaTime);
+        float temp = cameraAxis.transform.eulerAngles.z > 180f ? cameraAxis.transform.eulerAngles.z - 360f : cameraAxis.transform.eulerAngles.z;
+        cameraAxis.transform.rotation = Quaternion.Lerp(cameraAxis.transform.rotation, transform.rotation * Quaternion.Euler(offset) * Quaternion.Euler(new Vector3(0f, 0f, -temp * cameraLeanMultiplier)), cameraRotationLerpRate * Time.fixedDeltaTime);
         Vector3 gravity = globalGravity * gravityScale * Vector3.up;
-        transform.eulerAngles = new Vector3(transform.eulerAngles.x, transform.eulerAngles.y, currentSteer * leanCoef);
+        transform.eulerAngles = new Vector3(transform.eulerAngles.x, transform.eulerAngles.y, currentSteer * leanCoef * Mathf.Clamp(rb.velocity.magnitude * 0.05f, 0f, 1f));
 
         rb.AddForce(gravity, ForceMode.Acceleration);
     }
