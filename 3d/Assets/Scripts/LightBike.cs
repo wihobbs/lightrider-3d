@@ -19,7 +19,7 @@ public class LightBike : MonoBehaviour
     public float cameraLeanMultiplier = 0.5f;
     public float speedCompensation = 0.2f;
     public float gravityScale = 1.0f;
-    
+
     [Space(15)]
     public Vector2 MouseSensitivity;
     public string horizontalAxisName = "Horizontal1";
@@ -68,16 +68,13 @@ public class LightBike : MonoBehaviour
             R.brakeTorque = Mathf.Clamp(-modifiedVerticalInput, 0f, 1f) * brakeTorque.y;
         }
 
-        
-
         offset += new Vector3(Input.GetAxis("Mouse Y") * MouseSensitivity.y * Input.GetAxis("Fire2"), Input.GetAxis("Mouse X") * MouseSensitivity.x * Input.GetAxis("Fire2"), 0f);
         offset = offset * Input.GetAxis("Fire2");
 
         dot = Vector3.Dot(rb.velocity, transform.forward);
 
-        if (modifiedVerticalInput < 0 && dot * gear < 0.5f){
+        if (modifiedVerticalInput < 0 && dot * gear < 0.5f)
             forward = !forward;
-        }
     }
 
     void FixedUpdate(){
@@ -86,7 +83,6 @@ public class LightBike : MonoBehaviour
         cameraAxis.transform.rotation = Quaternion.Lerp(cameraAxis.transform.rotation, transform.rotation * Quaternion.Euler(offset) * Quaternion.Euler(new Vector3(0f, 0f, -temp * cameraLeanMultiplier)), cameraRotationLerpRate * Time.fixedDeltaTime);
         Vector3 gravity = globalGravity * gravityScale * Vector3.up;
         transform.eulerAngles = new Vector3(transform.eulerAngles.x, transform.eulerAngles.y, currentSteer * leanCoef * Mathf.Clamp(rb.velocity.magnitude * 0.05f, 0f, 1f));
-
         rb.AddForce(gravity, ForceMode.Acceleration);
     }
 }
