@@ -4,42 +4,46 @@ using UnityEngine;
 
 public class LightBike : MonoBehaviour
 {
-    public WheelCollider[] F;
-    public WheelCollider[] R;
-    public GameObject steerTransform;
-    public GameObject susFTransform;
-    public GameObject susRTransform;
-    public GameObject wheelFTransform;
-    public GameObject wheelRTransform;
+    public LightBikeWheel[] F;
+    public LightBikeWheel[] R;
 
     public Vector2 motorTorque;
     public Vector2 brakeTorque;
     public float steerAngle = 10f;
-    public GameObject cameraAxis;
+
+    [Space(15)]
     public float cameraPositionLerpRate = 10f;
     public float cameraRotationLerpRate = 7f;
     public float steerLerpRate = 1f;
     public float leanCoef = -10f;
     public float cameraLeanMultiplier = 0.5f;
-
-    [SerializeField]
-    private float currentSteer;
     public float speedCompensation = 0.2f;
-    [SerializeField]
-    private float currentSpeed;
-    private Rigidbody rb;
     public float gravityScale = 1.0f;
-    static float globalGravity = -9.8f;
+    
+    [Space(15)]
     public Vector2 MouseSensitivity;
-    Vector3 offset;
     public string horizontalAxisName = "Horizontal1";
     public string verticalAxisName = "Vertical1";
+    
+    
+    private GameObject cameraAxis;
+    private float currentSteer;
+    private float currentSpeed;
+    private Rigidbody rb;
+    private static float globalGravity = -9.8f;
+    private Vector3 offset;
+    private bool forward;
+    private float dot;
+
+
     
     // Start is called before the first frame update\
     void Start()
     {
         rb = GetComponent<Rigidbody>();
-
+        cameraAxis = transform.Find("cameraAxis").gameObject;
+        cameraAxis.transform.parent = null;
+        forward = true;
     }
 
     // Update is called once per frame
@@ -49,24 +53,31 @@ public class LightBike : MonoBehaviour
         
         currentSpeed = rb.velocity.magnitude;
         float veloComp = rb.velocity.magnitude > 35f ? Mathf.Clamp((40f - rb.velocity.magnitude) * 0.2f, 0f, 1f) : 1;
-        foreach (WheelCollider F in F)
+        
+        int gear = forward ? 1 : -1;
+        float modifiedVerticalInput = Input.GetAxis(verticalAxisName) * gear;
+        
+        foreach (LightBikeWheel F in F)
         {
-            F.motorTorque = Mathf.Clamp(Input.GetAxis(verticalAxisName), 0f, 1f) * motorTorque.x * veloComp;
-            F.brakeTorque = Mathf.Clamp(-Input.GetAxis(verticalAxisName), 0f, 1f) * brakeTorque.x;
+            F.motorTorque = Mathf.Clamp(modifiedVerticalInput, 0f, 1f) * motorTorque.x * veloComp * gear;
+            F.brakeTorque = Mathf.Clamp(-modifiedVerticalInput, 0f, 1f) * brakeTorque.x;
             F.steerAngle = currentSteer * steerAngle;
-            wheelFTransform.gameObject.transform.Rotate(-F.rpm / 60 * 360 * Time.deltaTime, 0, 0);
         }
-        foreach (WheelCollider R in R) {
-            R.motorTorque = Mathf.Clamp(Input.GetAxis(verticalAxisName), 0f, 1f) * motorTorque.y * veloComp;
-            R.brakeTorque = Mathf.Clamp(-Input.GetAxis(verticalAxisName), 0f, 1f) * brakeTorque.y;
-            wheelRTransform.gameObject.transform.Rotate(-R.rpm / 60 * 360 * Time.deltaTime, 0, 0);
+        foreach (LightBikeWheel R in R) {
+            R.motorTorque = Mathf.Clamp(modifiedVerticalInput, 0f, 1f) * motorTorque.y * veloComp * gear;
+            R.brakeTorque = Mathf.Clamp(-modifiedVerticalInput, 0f, 1f) * brakeTorque.y;
         }
 
-        steerTransform.transform.localEulerAngles = new Vector3(currentSteer * steerAngle, 55f, 0f);
+        
 
         offset += new Vector3(Input.GetAxis("Mouse Y") * MouseSensitivity.y * Input.GetAxis("Fire2"), Input.GetAxis("Mouse X") * MouseSensitivity.x * Input.GetAxis("Fire2"), 0f);
         offset = offset * Input.GetAxis("Fire2");
 
+        dot = Vector3.Dot(rb.velocity, transform.forward);
+
+        if (modifiedVerticalInput < 0 && dot * gear < 0.5f){
+            forward = !forward;
+        }
     }
 
     void FixedUpdate(){
