@@ -62,7 +62,7 @@ public class LightBike : MonoBehaviour
             wheelRTransform.gameObject.transform.Rotate(-R.rpm / 60 * 360 * Time.deltaTime, 0, 0);
         }
 
-        //transform.eulerAngles = new Vector3(transform.eulerAngles.x, transform.eulerAngles.y, currentSteer * leanCoef);
+        steerTransform.transform.localEulerAngles = new Vector3(currentSteer * steerAngle, 55f, 0f);
 
         offset += new Vector3(Input.GetAxis("Mouse Y") * MouseSensitivity.y * Input.GetAxis("Fire2"), Input.GetAxis("Mouse X") * MouseSensitivity.x * Input.GetAxis("Fire2"), 0f);
         offset = offset * Input.GetAxis("Fire2");

@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 705507994}
-  m_IndirectSpecularColor: {r: 246.10925, g: 264.4994, b: 324.27716, a: 1}
+  m_IndirectSpecularColor: {r: 245.6089, g: 263.97733, b: 323.61627, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -798,7 +798,7 @@ MonoBehaviour:
   - {fileID: 254984914}
   R:
   - {fileID: 708497791}
-  steerTransform: {fileID: 0}
+  steerTransform: {fileID: 2046505950}
   susFTransform: {fileID: 0}
   susRTransform: {fileID: 0}
   wheelFTransform: {fileID: 901897123871289552}
