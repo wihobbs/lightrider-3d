@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 705507994}
-  m_IndirectSpecularColor: {r: 245.6089, g: 263.97733, b: 323.61627, a: 1}
+  m_IndirectSpecularColor: {r: 246.10925, g: 264.4994, b: 324.27716, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -1000,13 +1000,17 @@ MonoBehaviour:
   motorTorque: {x: 1000, y: 0}
   brakeTorque: {x: 0, y: 600}
   steerAngle: 14
-  cameraPositionLerpRate: 22
-  cameraRotationLerpRate: 5
+  cameraPositionLerpRate: 35
+  cameraRotationLerpRate: 4.5
   steerLerpRate: 0.88
   leanCoef: -30
+  cameraOffsetMultiplier: 1.7
+  cameraOffsetMultiplier2: 0.32
+  cameraOffsetBehavior: 0.94
   cameraLeanMultiplier: 7
   speedCompensation: 0.2
   gravityScale: 1
+  cameraMinMax: {x: 60, y: 75}
   MouseSensitivity: {x: 2, y: -2}
   horizontalAxisName: Horizontal1
   verticalAxisName: Vertical1
@@ -1023,7 +1027,7 @@ GameObject:
   - component: {fileID: 963194226}
   - component: {fileID: 963194229}
   m_Layer: 0
-  m_Name: Main Camera
+  m_Name: Camera
   m_TagString: MainCamera
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1306,7 +1310,7 @@ MeshRenderer:
   m_RendererPriority: 0
   m_Materials:
   - {fileID: 2100000, guid: e55178b18a7aea34883ff40cbe9e81ec, type: 2}
-  - {fileID: 2100000, guid: b97137aaeff53a347981f3c056557c41, type: 2}
+  - {fileID: 2100000, guid: b0bbac18821ecd14bb79779f4b565cbe, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -1712,7 +1716,7 @@ MeshRenderer:
   m_RendererPriority: 0
   m_Materials:
   - {fileID: 2100000, guid: e55178b18a7aea34883ff40cbe9e81ec, type: 2}
-  - {fileID: 2100000, guid: b97137aaeff53a347981f3c056557c41, type: 2}
+  - {fileID: 2100000, guid: b0bbac18821ecd14bb79779f4b565cbe, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0

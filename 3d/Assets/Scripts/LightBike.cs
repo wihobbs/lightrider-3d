@@ -16,9 +16,13 @@ public class LightBike : MonoBehaviour
     public float cameraRotationLerpRate = 7f;
     public float steerLerpRate = 1f;
     public float leanCoef = -10f;
+    public float cameraOffsetMultiplier = 1f;
+    public float cameraOffsetMultiplier2 = 1f;
+    public float cameraOffsetBehavior = 1f;
     public float cameraLeanMultiplier = 0.5f;
     public float speedCompensation = 0.2f;
     public float gravityScale = 1.0f;
+    public Vector2 cameraMinMax;
 
     [Space(15)]
     public Vector2 MouseSensitivity;
@@ -27,6 +31,7 @@ public class LightBike : MonoBehaviour
     
     
     private GameObject cameraAxis;
+    private Camera camera;
     private float currentSteer;
     private float currentSpeed;
     private Rigidbody rb;
@@ -43,6 +48,7 @@ public class LightBike : MonoBehaviour
         rb = GetComponent<Rigidbody>();
         cameraAxis = transform.Find("cameraAxis").gameObject;
         cameraAxis.transform.parent = null;
+        camera = cameraAxis.transform.Find("Camera").GetComponent<Camera>();
         forward = true;
     }
 
@@ -73,12 +79,16 @@ public class LightBike : MonoBehaviour
 
         dot = Vector3.Dot(rb.velocity, transform.forward);
 
+        camera.fieldOfView = Mathf.Pow((rb.velocity.magnitude * 0.025f), 2) * (cameraMinMax.y - cameraMinMax.x) + cameraMinMax.x;
+
         if (modifiedVerticalInput < 0 && dot * gear < 0.5f)
             forward = !forward;
     }
 
     void FixedUpdate(){
-        cameraAxis.transform.position = Vector3.Lerp(cameraAxis.transform.position, transform.position, cameraPositionLerpRate * Time.fixedDeltaTime);
+        cameraAxis.transform.position = Vector3.Lerp(cameraAxis.transform.position + transform.right * Mathf.Pow(Mathf.Abs(currentSteer), cameraOffsetBehavior) * Mathf.Sign(currentSteer) * cameraOffsetMultiplier * Mathf.Clamp(rb.velocity.magnitude * 0.05f, 0f, 1f) + transform.up * Mathf.Abs(currentSteer) * cameraOffsetMultiplier2 * Mathf.Clamp(rb.velocity.magnitude * 0.05f, 0f, 1f),
+            transform.position,
+            cameraPositionLerpRate * Time.fixedDeltaTime);
         float temp = cameraAxis.transform.eulerAngles.z > 180f ? cameraAxis.transform.eulerAngles.z - 360f : cameraAxis.transform.eulerAngles.z;
         cameraAxis.transform.rotation = Quaternion.Lerp(cameraAxis.transform.rotation, transform.rotation * Quaternion.Euler(offset) * Quaternion.Euler(new Vector3(0f, 0f, -temp * cameraLeanMultiplier)), cameraRotationLerpRate * Time.fixedDeltaTime);
         Vector3 gravity = globalGravity * gravityScale * Vector3.up;
