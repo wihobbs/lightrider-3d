@@ -4,6 +4,13 @@ using UnityEngine;
 
 public class LightBike : MonoBehaviour
 {
+    [System.Serializable]
+    public struct MeshMaterialPair
+    {
+        public MeshRenderer mr;
+        public int mat;
+    }
+
     public LightBikeWheel[] F;
     public LightBikeWheel[] R;
 
@@ -27,12 +34,21 @@ public class LightBike : MonoBehaviour
     [Space(15)]
     public Vector2 MouseSensitivity;
     public string horizontalAxisName = "Horizontal1";
-    public string verticalAxisName = "Vertical1";
-    
+    public string throttleAxis = "Vertical1";
+    public string brakeAxis = "Vertical1";
+
+    [Space(15)]
+    public MeshMaterialPair[] lights;
+    [ColorUsage(true, true)]
+    public Color lightColor;
+
+    public float throttleInput;
+    public float brakeInput;
     
     private GameObject cameraAxis;
     private Camera camera;
     private float currentSteer;
+    private float currentSteer2;
     private float currentSpeed;
     private Rigidbody rb;
     private static float globalGravity = -9.8f;
@@ -50,28 +66,34 @@ public class LightBike : MonoBehaviour
         cameraAxis.transform.parent = null;
         camera = cameraAxis.transform.Find("Camera").GetComponent<Camera>();
         forward = true;
+
+        foreach(MeshMaterialPair m in lights){
+            //m.mr.materials[m.mat].color = lightColor;
+        }
     }
 
     // Update is called once per frame
     void Update()
     {
-        currentSteer = Mathf.Lerp(currentSteer, Input.GetAxis(horizontalAxisName), steerLerpRate * Time.fixedDeltaTime);
-        
+        currentSteer = Mathf.Lerp(currentSteer, Input.GetAxis(horizontalAxisName) * (1 - speedCompensation * Mathf.Pow(Mathf.Clamp(rb.velocity.magnitude * 0.025f, 0f, 1f), 0.4f)), steerLerpRate * Time.fixedDeltaTime);
+        currentSteer2 = Mathf.Lerp(currentSteer2, currentSteer, 7f * Time.fixedDeltaTime);
+
         currentSpeed = rb.velocity.magnitude;
         float veloComp = rb.velocity.magnitude > 35f ? Mathf.Clamp((40f - rb.velocity.magnitude) * 0.2f, 0f, 1f) : 1;
         
         int gear = forward ? 1 : -1;
-        float modifiedVerticalInput = Input.GetAxis(verticalAxisName) * gear;
-        
+        throttleInput = forward ? Input.GetAxis(throttleAxis) : Input.GetAxis(brakeAxis);
+        brakeInput = forward ? Input.GetAxis(brakeAxis) : Input.GetAxis(throttleAxis);
+
         foreach (LightBikeWheel F in F)
         {
-            F.motorTorque = Mathf.Clamp(modifiedVerticalInput, 0f, 1f) * motorTorque.x * veloComp * gear;
-            F.brakeTorque = Mathf.Clamp(-modifiedVerticalInput, 0f, 1f) * brakeTorque.x;
-            F.steerAngle = currentSteer * steerAngle;
+            F.motorTorque = throttleInput * motorTorque.x * veloComp * gear;
+            F.brakeTorque = brakeInput * brakeTorque.x;
+            F.steerAngle = currentSteer2 * steerAngle;
         }
         foreach (LightBikeWheel R in R) {
-            R.motorTorque = Mathf.Clamp(modifiedVerticalInput, 0f, 1f) * motorTorque.y * veloComp * gear;
-            R.brakeTorque = Mathf.Clamp(-modifiedVerticalInput, 0f, 1f) * brakeTorque.y;
+            R.motorTorque = throttleInput * motorTorque.y * veloComp * gear;
+            R.brakeTorque = brakeInput * brakeTorque.y;
         }
 
         offset += new Vector3(Input.GetAxis("Mouse Y") * MouseSensitivity.y * Input.GetAxis("Fire2"), Input.GetAxis("Mouse X") * MouseSensitivity.x * Input.GetAxis("Fire2"), 0f);
@@ -81,18 +103,22 @@ public class LightBike : MonoBehaviour
 
         camera.fieldOfView = Mathf.Pow((rb.velocity.magnitude * 0.025f), 2) * (cameraMinMax.y - cameraMinMax.x) + cameraMinMax.x;
 
-        if (modifiedVerticalInput < 0 && dot * gear < 0.5f)
+        if (brakeInput > 0 && dot * gear < 0.5f)
             forward = !forward;
+        
+        foreach(MeshMaterialPair m in lights){
+            m.mr.materials[m.mat].SetColor("_EmissiveColor", lightColor);
+        }
     }
 
     void FixedUpdate(){
-        cameraAxis.transform.position = Vector3.Lerp(cameraAxis.transform.position + transform.right * Mathf.Pow(Mathf.Abs(currentSteer), cameraOffsetBehavior) * Mathf.Sign(currentSteer) * cameraOffsetMultiplier * Mathf.Clamp(rb.velocity.magnitude * 0.05f, 0f, 1f) + transform.up * Mathf.Abs(currentSteer) * cameraOffsetMultiplier2 * Mathf.Clamp(rb.velocity.magnitude * 0.05f, 0f, 1f),
+        cameraAxis.transform.position = Vector3.Lerp(cameraAxis.transform.position + transform.right * Mathf.Pow(Mathf.Abs(currentSteer2), cameraOffsetBehavior) * Mathf.Sign(currentSteer2) * cameraOffsetMultiplier * Mathf.Clamp(rb.velocity.magnitude * 0.05f, 0f, 1f) + transform.up * Mathf.Abs(currentSteer) * cameraOffsetMultiplier2 * Mathf.Clamp(rb.velocity.magnitude * 0.05f, 0f, 1f),
             transform.position,
             cameraPositionLerpRate * Time.fixedDeltaTime);
         float temp = cameraAxis.transform.eulerAngles.z > 180f ? cameraAxis.transform.eulerAngles.z - 360f : cameraAxis.transform.eulerAngles.z;
         cameraAxis.transform.rotation = Quaternion.Lerp(cameraAxis.transform.rotation, transform.rotation * Quaternion.Euler(offset) * Quaternion.Euler(new Vector3(0f, 0f, -temp * cameraLeanMultiplier)), cameraRotationLerpRate * Time.fixedDeltaTime);
         Vector3 gravity = globalGravity * gravityScale * Vector3.up;
-        transform.eulerAngles = new Vector3(transform.eulerAngles.x, transform.eulerAngles.y, currentSteer * leanCoef * Mathf.Clamp(rb.velocity.magnitude * 0.05f, 0f, 1f));
+        transform.eulerAngles = new Vector3(transform.eulerAngles.x, transform.eulerAngles.y, currentSteer2 * leanCoef * Mathf.Clamp(rb.velocity.magnitude * 0.05f, 0f, 1f));
         rb.AddForce(gravity, ForceMode.Acceleration);
     }
 }
