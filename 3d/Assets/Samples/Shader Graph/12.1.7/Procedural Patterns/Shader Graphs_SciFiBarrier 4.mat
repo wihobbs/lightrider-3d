@@ -123,7 +123,7 @@ Material:
     - _metallic: 0.8
     - _multiply_hex_alpha: 0.23
     - _multiply_hex_noise: 1.33
-    - _normalStrength: 0.9
+    - _normalStrength: 0.6
     - _smoothness: 0.9
     - _speed: 0.25
     - _tile: 0.15
