@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 705507994}
-  m_IndirectSpecularColor: {r: 0.5018505, g: 0.5018505, b: 0.5018505, a: 1}
+  m_IndirectSpecularColor: {r: 0.50107485, g: 0.50107485, b: 0.50107485, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -4705,7 +4705,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4704120700225040871, guid: c2d319ee23985ce45a1f58dd4d8e1baa, type: 3}
       propertyPath: brakeAxis
-      value: Brake3
+      value: Brake1
       objectReference: {fileID: 0}
     - target: {fileID: 4704120700225040871, guid: c2d319ee23985ce45a1f58dd4d8e1baa, type: 3}
       propertyPath: lightColor.b
@@ -4721,7 +4721,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4704120700225040871, guid: c2d319ee23985ce45a1f58dd4d8e1baa, type: 3}
       propertyPath: throttleAxis
-      value: Throttle3
+      value: Throttle1
       objectReference: {fileID: 0}
     - target: {fileID: 4704120700225040871, guid: c2d319ee23985ce45a1f58dd4d8e1baa, type: 3}
       propertyPath: verticalAxisName
@@ -4729,7 +4729,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4704120700225040871, guid: c2d319ee23985ce45a1f58dd4d8e1baa, type: 3}
       propertyPath: horizontalAxisName
-      value: Horizontal3
+      value: Horizontal1
       objectReference: {fileID: 0}
     - target: {fileID: 6182544009406570452, guid: c2d319ee23985ce45a1f58dd4d8e1baa, type: 3}
       propertyPath: m_Enabled

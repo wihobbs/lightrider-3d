@@ -134,7 +134,7 @@ Light:
   m_InnerSpotAngle: 1
   m_CookieSize: 10
   m_Shadows:
-    m_Type: 1
+    m_Type: 0
     m_Resolution: -1
     m_CustomResolution: -1
     m_Strength: 1
@@ -1958,7 +1958,7 @@ MonoBehaviour:
   steerAngle: 42
   cameraPositionLerpRate: 32
   cameraRotationLerpRate: 4.5
-  steerLerpRate: 1.5
+  steerLerpRate: 2.2
   leanCoef: -40
   cameraOffsetMultiplier: 2.55
   cameraOffsetMultiplier2: 0.48
