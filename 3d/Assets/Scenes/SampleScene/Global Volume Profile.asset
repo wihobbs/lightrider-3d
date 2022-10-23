@@ -14,11 +14,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   active: 1
   quality:
-    m_OverrideState: 0
-    m_Value: 1
+    m_OverrideState: 1
+    m_Value: 2
   intensity:
     m_OverrideState: 1
-    m_Value: 1.45
+    m_Value: 0
   maximumVelocity:
     m_OverrideState: 0
     m_Value: 200
@@ -44,8 +44,8 @@ MonoBehaviour:
     m_OverrideState: 0
     m_Value: 1
   m_SampleCount:
-    m_OverrideState: 0
-    m_Value: 8
+    m_OverrideState: 1
+    m_Value: 12
 --- !u!114 &-8136702564059746192
 MonoBehaviour:
   m_ObjectHideFlags: 3
@@ -86,28 +86,28 @@ MonoBehaviour:
   active: 1
   quality:
     m_OverrideState: 1
-    m_Value: 2
+    m_Value: 3
   rayTracing:
     m_OverrideState: 0
     m_Value: 0
   intensity:
     m_OverrideState: 1
-    m_Value: 3.3
+    m_Value: 0
   directLightingStrength:
     m_OverrideState: 1
     m_Value: 0
   radius:
     m_OverrideState: 1
-    m_Value: 0.74
+    m_Value: 1.55
   spatialBilateralAggressiveness:
-    m_OverrideState: 0
-    m_Value: 0.15
+    m_OverrideState: 1
+    m_Value: 1
   temporalAccumulation:
     m_OverrideState: 1
     m_Value: 1
   ghostingReduction:
     m_OverrideState: 1
-    m_Value: 0.5
+    m_Value: 1
   blurSharpness:
     m_OverrideState: 0
     m_Value: 0.1
@@ -124,7 +124,7 @@ MonoBehaviour:
     m_Value: 1
   m_StepCount:
     m_OverrideState: 1
-    m_Value: 16
+    m_Value: 25
   m_FullResolution:
     m_OverrideState: 1
     m_Value: 1
@@ -164,7 +164,7 @@ MonoBehaviour:
   active: 1
   skyType:
     m_OverrideState: 1
-    m_Value: 1
+    m_Value: 3
   cloudType:
     m_OverrideState: 1
     m_Value: 0
@@ -347,6 +347,55 @@ MonoBehaviour:
   reflectionProbeIntensityMultiplier:
     m_OverrideState: 0
     m_Value: 1
+--- !u!114 &-1912890762170198346
+MonoBehaviour:
+  m_ObjectHideFlags: 3
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 56b145d2b9ee1ac4f846968484e7485a, type: 3}
+  m_Name: ContactShadows
+  m_EditorClassIdentifier: 
+  active: 1
+  quality:
+    m_OverrideState: 1
+    m_Value: 3
+  enable:
+    m_OverrideState: 1
+    m_Value: 0
+  length:
+    m_OverrideState: 1
+    m_Value: 1
+  opacity:
+    m_OverrideState: 1
+    m_Value: 1
+  distanceScaleFactor:
+    m_OverrideState: 1
+    m_Value: 0.5
+  maxDistance:
+    m_OverrideState: 1
+    m_Value: 150
+  minDistance:
+    m_OverrideState: 1
+    m_Value: 0
+  fadeDistance:
+    m_OverrideState: 1
+    m_Value: 10
+  fadeInDistance:
+    m_OverrideState: 1
+    m_Value: 0
+  rayBias:
+    m_OverrideState: 1
+    m_Value: 1
+  thicknessScale:
+    m_OverrideState: 1
+    m_Value: 0.132
+  m_SampleCount:
+    m_OverrideState: 1
+    m_Value: 34
 --- !u!114 &-553720495404051787
 MonoBehaviour:
   m_ObjectHideFlags: 3
@@ -493,6 +542,8 @@ MonoBehaviour:
   - {fileID: 5827794865748176800}
   - {fileID: -5833446199500198738}
   - {fileID: -8302575352893107026}
+  - {fileID: 3743950222183394780}
+  - {fileID: -1912890762170198346}
 --- !u!114 &968213626044306023
 MonoBehaviour:
   m_ObjectHideFlags: 3
@@ -511,6 +562,61 @@ MonoBehaviour:
     m_Value: 0.1
   cropToFit:
     m_OverrideState: 0
+    m_Value: 1
+--- !u!114 &3743950222183394780
+MonoBehaviour:
+  m_ObjectHideFlags: 3
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a81bcacc415a1f743bfdf703afc52027, type: 3}
+  m_Name: GradientSky
+  m_EditorClassIdentifier: 
+  active: 1
+  rotation:
+    m_OverrideState: 0
+    m_Value: 0
+  skyIntensityMode:
+    m_OverrideState: 1
+    m_Value: 2
+  exposure:
+    m_OverrideState: 0
+    m_Value: 0
+  multiplier:
+    m_OverrideState: 1
+    m_Value: 2
+  upperHemisphereLuxValue:
+    m_OverrideState: 0
+    m_Value: 1
+  upperHemisphereLuxColor:
+    m_OverrideState: 0
+    m_Value: {x: 0, y: 0, z: 0}
+  desiredLuxValue:
+    m_OverrideState: 0
+    m_Value: 20000
+  updateMode:
+    m_OverrideState: 0
+    m_Value: 0
+  updatePeriod:
+    m_OverrideState: 0
+    m_Value: 0
+  includeSunInBaking:
+    m_OverrideState: 0
+    m_Value: 0
+  top:
+    m_OverrideState: 1
+    m_Value: {r: 0, g: 0, b: 0, a: 1}
+  middle:
+    m_OverrideState: 1
+    m_Value: {r: 0, g: 0, b: 0, a: 1}
+  bottom:
+    m_OverrideState: 1
+    m_Value: {r: 1, g: 1, b: 1, a: 1}
+  gradientDiffusion:
+    m_OverrideState: 1
     m_Value: 1
 --- !u!114 &5602406578551183966
 MonoBehaviour:
@@ -576,7 +682,7 @@ MonoBehaviour:
     m_Value: 1
   fixedExposure:
     m_OverrideState: 1
-    m_Value: 10.036413
+    m_Value: 9
   compensation:
     m_OverrideState: 1
     m_Value: 0.6
@@ -897,20 +1003,20 @@ MonoBehaviour:
     m_OverrideState: 0
     m_Value: 0
   skyIntensityMode:
-    m_OverrideState: 0
+    m_OverrideState: 1
     m_Value: 0
   exposure:
-    m_OverrideState: 0
-    m_Value: 0
+    m_OverrideState: 1
+    m_Value: 6.46
   multiplier:
     m_OverrideState: 0
     m_Value: 1
   upperHemisphereLuxValue:
     m_OverrideState: 0
-    m_Value: 1.377718
+    m_Value: 1.377639
   upperHemisphereLuxColor:
     m_OverrideState: 0
-    m_Value: {x: 0.45254302, y: 0.44185618, z: 0.5}
+    m_Value: {x: 0.45252955, y: 0.4418233, z: 0.5}
   desiredLuxValue:
     m_OverrideState: 0
     m_Value: 20000
@@ -1353,40 +1459,40 @@ MonoBehaviour:
   active: 1
   quality:
     m_OverrideState: 1
-    m_Value: 2
+    m_Value: 3
   enabled:
     m_OverrideState: 1
     m_Value: 1
   enabledTransparent:
     m_OverrideState: 1
-    m_Value: 1
+    m_Value: 0
   tracing:
     m_OverrideState: 0
     m_Value: 1
   m_MinSmoothness:
-    m_OverrideState: 0
-    m_Value: 0.9
+    m_OverrideState: 1
+    m_Value: 0.192
   m_SmoothnessFadeStart:
-    m_OverrideState: 0
-    m_Value: 0.9
+    m_OverrideState: 1
+    m_Value: 1
   reflectSky:
     m_OverrideState: 1
     m_Value: 1
   usedAlgorithm:
-    m_OverrideState: 0
-    m_Value: 0
+    m_OverrideState: 1
+    m_Value: 1
   depthBufferThickness:
     m_OverrideState: 1
-    m_Value: 0.01
+    m_Value: 0.122
   screenFadeDistance:
     m_OverrideState: 1
-    m_Value: 0.1
+    m_Value: 0.496
   accumulationFactor:
-    m_OverrideState: 0
-    m_Value: 0.75
+    m_OverrideState: 1
+    m_Value: 0.412
   m_RayMaxIterations:
     m_OverrideState: 1
-    m_Value: 64
+    m_Value: 256
   rayMiss:
     m_OverrideState: 0
     m_Value: 3

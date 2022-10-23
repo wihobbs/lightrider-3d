@@ -29,6 +29,8 @@ public class LightBike : MonoBehaviour
     public float cameraLeanMultiplier = 0.5f;
     public float speedCompensation = 0.2f;
     public float gravityScale = 1.0f;
+    public float stability = 0.3f;
+    public float speed = 2.0f;
     public Vector2 cameraMinMax;
 
     [Space(15)]
@@ -47,7 +49,7 @@ public class LightBike : MonoBehaviour
     
     private GameObject cameraAxis;
     private Camera camera;
-    private float currentSteer;
+    public float currentSteer;
     private float currentSteer2;
     private float currentSpeed;
     private Rigidbody rb;
@@ -75,15 +77,15 @@ public class LightBike : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        currentSteer = Mathf.Lerp(currentSteer, Input.GetAxis(horizontalAxisName) * (1 - speedCompensation * Mathf.Pow(Mathf.Clamp(rb.velocity.magnitude * 0.025f, 0f, 1f), 0.4f)), steerLerpRate * Time.fixedDeltaTime);
-        currentSteer2 = Mathf.Lerp(currentSteer2, currentSteer, 7f * Time.fixedDeltaTime);
+        currentSteer = Mathf.Lerp(currentSteer, Input.GetAxis(horizontalAxisName) * (1 - speedCompensation * Mathf.Pow(Mathf.Clamp(rb.velocity.magnitude * 0.025f, 0f, 1f), 0.4f)), steerLerpRate * Time.deltaTime);
+        currentSteer2 = Mathf.Lerp(currentSteer2, currentSteer, 5f * Time.deltaTime);
 
         currentSpeed = rb.velocity.magnitude;
         float veloComp = rb.velocity.magnitude > 35f ? Mathf.Clamp((40f - rb.velocity.magnitude) * 0.2f, 0f, 1f) : 1;
         
         int gear = forward ? 1 : -1;
-        throttleInput = forward ? Input.GetAxis(throttleAxis) : Input.GetAxis(brakeAxis);
-        brakeInput = forward ? Input.GetAxis(brakeAxis) : Input.GetAxis(throttleAxis);
+        throttleInput = forward ? Mathf.Pow(Input.GetAxis(throttleAxis), 3f) : Mathf.Pow(Input.GetAxis(brakeAxis), 3f);
+        brakeInput = forward ? Mathf.Pow(Input.GetAxis(brakeAxis), 3f) : Mathf.Pow(Input.GetAxis(throttleAxis), 3f);
 
         foreach (LightBikeWheel F in F)
         {
@@ -95,6 +97,12 @@ public class LightBike : MonoBehaviour
             R.motorTorque = throttleInput * motorTorque.y * veloComp * gear;
             R.brakeTorque = brakeInput * brakeTorque.y;
         }
+
+        RaycastHit hit;
+        //if (Physics.Raycast(transform.position, rb.velocity.normalized - transform.up, out hit, 5f){
+        //transform.up = Vector3.up;
+        //}
+        //transform.rotation = Quaternion.FromToRotation(transform.up, Vector3.up);
 
         offset += new Vector3(Input.GetAxis("Mouse Y") * MouseSensitivity.y * Input.GetAxis("Fire2"), Input.GetAxis("Mouse X") * MouseSensitivity.x * Input.GetAxis("Fire2"), 0f);
         offset = offset * Input.GetAxis("Fire2");
@@ -118,7 +126,18 @@ public class LightBike : MonoBehaviour
         float temp = cameraAxis.transform.eulerAngles.z > 180f ? cameraAxis.transform.eulerAngles.z - 360f : cameraAxis.transform.eulerAngles.z;
         cameraAxis.transform.rotation = Quaternion.Lerp(cameraAxis.transform.rotation, transform.rotation * Quaternion.Euler(offset) * Quaternion.Euler(new Vector3(0f, 0f, -temp * cameraLeanMultiplier)), cameraRotationLerpRate * Time.fixedDeltaTime);
         Vector3 gravity = globalGravity * gravityScale * Vector3.up;
+        RaycastHit hit;
+        //if (Physics.Raycast(transform.position, rb.velocity.normalized - transform.up, out hit, 5f){
+            //transform.up = 
+        //}
         transform.eulerAngles = new Vector3(transform.eulerAngles.x, transform.eulerAngles.y, currentSteer2 * leanCoef * Mathf.Clamp(rb.velocity.magnitude * 0.05f, 0f, 1f));
         rb.AddForce(gravity, ForceMode.Acceleration);
+
+        Vector3 predictedUp = Quaternion.AngleAxis(
+         rb.angularVelocity.magnitude * Mathf.Rad2Deg * stability / speed,
+         rb.angularVelocity
+     ) * transform.up;
+        Vector3 torqueVector = Vector3.Cross(predictedUp, Vector3.up);
+        rb.AddTorque(torqueVector * speed * speed);
     }
 }
