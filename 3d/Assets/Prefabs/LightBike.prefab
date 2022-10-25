@@ -300,6 +300,37 @@ MonoBehaviour:
   m_PointlightHDType: 0
   m_SpotLightShape: 0
   m_AreaLightShape: 0
+--- !u!1 &3491792391912128753
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 7452021929086973643}
+  m_Layer: 0
+  m_Name: spawner
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &7452021929086973643
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3491792391912128753}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: -1.5}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 4704120700225040869}
+  m_RootOrder: 10
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &3863034060392179390
 GameObject:
   m_ObjectHideFlags: 0
@@ -1154,14 +1185,15 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4704120698930607222}
-  - component: {fileID: 4704120698930607499}
+  - component: {fileID: 8745472796729822390}
+  - component: {fileID: 6170574456690476822}
   m_Layer: 0
   m_Name: Collider
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &4704120698930607222
 Transform:
   m_ObjectHideFlags: 0
@@ -1170,14 +1202,27 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4704120698930607223}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.45, z: -0.06}
+  m_LocalPosition: {x: 0, y: 0.45, z: 0}
   m_LocalScale: {x: 0.41, y: 0.46, z: 2.06}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 4704120700225040869}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!136 &4704120698930607499
+--- !u!65 &8745472796729822390
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4704120698930607223}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.5, y: 0.46, z: 0.97}
+  m_Center: {x: 0, y: -0.26, z: 0}
+--- !u!136 &6170574456690476822
 CapsuleCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -1188,7 +1233,7 @@ CapsuleCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   m_Radius: 0.5
-  m_Height: 1.03
+  m_Height: 1
   m_Direction: 2
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &4704120699023362123
@@ -1464,7 +1509,7 @@ WheelCollider:
     m_ExtremumValue: 1
     m_AsymptoteSlip: 0.5
     m_AsymptoteValue: 0.75
-    m_Stiffness: 2.3
+    m_Stiffness: 2.5
   m_Enabled: 1
 --- !u!114 &4704120699679382618
 MonoBehaviour:
@@ -1603,7 +1648,7 @@ AudioListener:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4704120699909338104}
-  m_Enabled: 1
+  m_Enabled: 0
 --- !u!114 &4704120699909338108
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1889,6 +1934,8 @@ GameObject:
   - component: {fileID: 4704120700225040869}
   - component: {fileID: 4704120700225040868}
   - component: {fileID: 4704120700225040871}
+  - component: {fileID: 5375672984799078019}
+  - component: {fileID: 3494175541716119286}
   m_Layer: 0
   m_Name: LightBike
   m_TagString: Untagged
@@ -1918,6 +1965,7 @@ Transform:
   - {fileID: 6592257324563237383}
   - {fileID: 5924690847242336616}
   - {fileID: 1640669345936750752}
+  - {fileID: 7452021929086973643}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -1958,16 +2006,16 @@ MonoBehaviour:
   steerAngle: 42
   cameraPositionLerpRate: 32
   cameraRotationLerpRate: 4.5
-  steerLerpRate: 2.2
-  leanCoef: -40
-  cameraOffsetMultiplier: 2.55
-  cameraOffsetMultiplier2: 0.48
+  steerLerpRate: 3
+  leanCoef: -45
+  cameraOffsetMultiplier: 1.5
+  cameraOffsetMultiplier2: 0.3
   cameraOffsetBehavior: 0.94
   cameraLeanMultiplier: 7
   speedCompensation: 0.37
   gravityScale: 1
-  stability: 0.3
-  speed: 2
+  stability: 100
+  speed: 10
   cameraMinMax: {x: 60, y: 75}
   MouseSensitivity: {x: 2, y: -2}
   horizontalAxisName: Horizontal1
@@ -1987,7 +2035,39 @@ MonoBehaviour:
   lightColor: {r: 12271.9375, g: 642.5098, b: 0, a: 10}
   throttleInput: 0
   brakeInput: 0
+  boxCollider: {fileID: 1485334091631263150, guid: 9c719e62d8f3a0a4fb9f44698e729b02, type: 3}
+  boxSpawnPosition: {fileID: 3491792391912128753}
+  frameInterval: 2
+  boxPrevLerp: -0.14
+  explosion: {fileID: 4245210838280974974, guid: 6c20d9395020d3140804e7a584bd3bde, type: 3}
   currentSteer: 0
+--- !u!65 &5375672984799078019
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4704120700225040865}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.12, y: 0.46, z: 1.84}
+  m_Center: {x: 0, y: 0.37, z: 0}
+--- !u!136 &3494175541716119286
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4704120700225040865}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  m_Radius: 0.26
+  m_Height: 2.06
+  m_Direction: 2
+  m_Center: {x: 0, y: 0.48, z: -0.04}
 --- !u!1 &4704120700272741722
 GameObject:
   m_ObjectHideFlags: 0

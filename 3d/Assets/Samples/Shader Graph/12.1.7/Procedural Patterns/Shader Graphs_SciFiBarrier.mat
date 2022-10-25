@@ -114,16 +114,16 @@ Material:
     - _ZTestGBuffer: 4
     - _ZTestTransparent: 4
     - _ZWrite: 1
-    - _float: 0
+    - _float: 0.36
     - _metallic: 0.66
-    - _multiply_hex_alpha: -2
+    - _multiply_hex_alpha: -0.31
     - _multiply_hex_noise: 2
-    - _smoothness: 0.42
+    - _smoothness: 0.96
     - _speed: 0.25
     - _tile: 0.23
     m_Colors:
     - _DoubleSidedConstants: {r: 1, g: 1, b: -1, a: 0}
     - _EmissionColor: {r: 1, g: 1, b: 1, a: 1}
-    - _TileColor: {r: 0, g: 0.22352941, b: 0.7490196, a: 0}
+    - _TileColor: {r: 0.25, g: 0.25, b: 0.25, a: 0}
     - _Tiling: {r: 8, g: 8, b: 0, a: 0}
   m_BuildTextureStacks: []

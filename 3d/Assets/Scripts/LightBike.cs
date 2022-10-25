@@ -46,6 +46,15 @@ public class LightBike : MonoBehaviour
 
     public float throttleInput;
     public float brakeInput;
+
+    public GameObject boxCollider;
+    public GameObject boxSpawnPosition;
+    private Quaternion prevRotation;
+    public int frameInterval = 4;
+    public float boxPrevLerp = -0.2f;
+    private int tracker = 0;
+    private float accumulatedSize = 0;
+    public GameObject explosion;
     
     private GameObject cameraAxis;
     private Camera camera;
@@ -69,6 +78,10 @@ public class LightBike : MonoBehaviour
         camera = cameraAxis.transform.Find("Camera").GetComponent<Camera>();
         forward = true;
 
+        tracker = 0;
+        accumulatedSize = 0;
+        prevRotation = Quaternion.identity;
+
         foreach(MeshMaterialPair m in lights){
             //m.mr.materials[m.mat].color = lightColor;
         }
@@ -77,7 +90,9 @@ public class LightBike : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        currentSteer = Mathf.Lerp(currentSteer, Input.GetAxis(horizontalAxisName) * (1 - speedCompensation * Mathf.Pow(Mathf.Clamp(rb.velocity.magnitude * 0.025f, 0f, 1f), 0.4f)), steerLerpRate * Time.deltaTime);
+        float tempSteerBackToCenter = Mathf.Abs(Input.GetAxis(horizontalAxisName)) < Mathf.Abs(currentSteer) ? 1f : 0f;
+        currentSteer = Mathf.Lerp(currentSteer, Input.GetAxis(horizontalAxisName) * (1 - speedCompensation * Mathf.Pow(Mathf.Clamp(rb.velocity.magnitude * 0.025f, 0f, 1f), 0.4f)),
+            (steerLerpRate + Mathf.Lerp(0, 2, tempSteerBackToCenter)) * Time.deltaTime);
         currentSteer2 = Mathf.Lerp(currentSteer2, currentSteer, 5f * Time.deltaTime);
 
         currentSpeed = rb.velocity.magnitude;
@@ -117,6 +132,16 @@ public class LightBike : MonoBehaviour
         foreach(MeshMaterialPair m in lights){
             m.mr.materials[m.mat].SetColor("_EmissiveColor", lightColor);
         }
+        
+        tracker++;
+        accumulatedSize += Time.deltaTime;
+        if (tracker >= frameInterval && dot > 0){
+            GameObject tempCollider = Instantiate(boxCollider, boxSpawnPosition.transform.position, Quaternion.LerpUnclamped(prevRotation, boxSpawnPosition.transform.rotation, boxPrevLerp));
+            tempCollider.transform.localScale = new Vector3(tempCollider.transform.localScale.x, tempCollider.transform.localScale.y, dot * accumulatedSize * 1.05f);
+            accumulatedSize = 0;
+            tracker = 0;
+            prevRotation = boxSpawnPosition.transform.rotation;
+        }
     }
 
     void FixedUpdate(){
@@ -139,5 +164,13 @@ public class LightBike : MonoBehaviour
      ) * transform.up;
         Vector3 torqueVector = Vector3.Cross(predictedUp, Vector3.up);
         rb.AddTorque(torqueVector * speed * speed);
+    }
+
+    void OnCollisionEnter(Collision collision){
+        if (collision.gameObject.tag == "LightTrail")
+        {
+            Instantiate(explosion, transform.position, Quaternion.identity);
+            Destroy(gameObject);
+        }
     }
 }

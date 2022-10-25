@@ -47,7 +47,7 @@ Light:
   m_Color: {r: 0.5990566, g: 0.87153393, b: 1, a: 1}
   m_Intensity: 524288
   m_Range: 150
-  m_SpotAngle: 120
+  m_SpotAngle: 140
   m_InnerSpotAngle: 1
   m_CookieSize: 10
   m_Shadows:
@@ -169,7 +169,7 @@ MonoBehaviour:
   m_ShadowResolution:
     m_Override: 512
     m_UseOverride: 0
-    m_Level: 3
+    m_Level: 0
   m_ShadowDimmer: 1
   m_VolumetricShadowDimmer: 1
   m_ShadowFadeDistance: 10000
@@ -184,7 +184,7 @@ MonoBehaviour:
   m_SlopeBias: 0.5
   m_ShadowUpdateMode: 1
   m_AlwaysDrawDynamicShadows: 0
-  m_UpdateShadowOnLightMovement: 0
+  m_UpdateShadowOnLightMovement: 1
   m_CachedShadowTranslationThreshold: 0.01
   m_CachedShadowAngularThreshold: 0.5
   m_BarnDoorAngle: 90
@@ -264,7 +264,7 @@ Light:
   m_Color: {r: 0.5990566, g: 0.87153393, b: 1, a: 1}
   m_Intensity: 524288
   m_Range: 150
-  m_SpotAngle: 120
+  m_SpotAngle: 140
   m_InnerSpotAngle: 1
   m_CookieSize: 10
   m_Shadows:
@@ -386,7 +386,7 @@ MonoBehaviour:
   m_ShadowResolution:
     m_Override: 512
     m_UseOverride: 0
-    m_Level: 3
+    m_Level: 0
   m_ShadowDimmer: 1
   m_VolumetricShadowDimmer: 1
   m_ShadowFadeDistance: 10000
@@ -401,7 +401,7 @@ MonoBehaviour:
   m_SlopeBias: 0.5
   m_ShadowUpdateMode: 1
   m_AlwaysDrawDynamicShadows: 0
-  m_UpdateShadowOnLightMovement: 0
+  m_UpdateShadowOnLightMovement: 1
   m_CachedShadowTranslationThreshold: 0.01
   m_CachedShadowAngularThreshold: 0.5
   m_BarnDoorAngle: 90
@@ -481,7 +481,7 @@ Light:
   m_Color: {r: 0.5990566, g: 0.87153393, b: 1, a: 1}
   m_Intensity: 524288
   m_Range: 150
-  m_SpotAngle: 120
+  m_SpotAngle: 140
   m_InnerSpotAngle: 1
   m_CookieSize: 10
   m_Shadows:
@@ -603,7 +603,7 @@ MonoBehaviour:
   m_ShadowResolution:
     m_Override: 512
     m_UseOverride: 0
-    m_Level: 3
+    m_Level: 0
   m_ShadowDimmer: 1
   m_VolumetricShadowDimmer: 1
   m_ShadowFadeDistance: 10000
@@ -618,7 +618,7 @@ MonoBehaviour:
   m_SlopeBias: 0.5
   m_ShadowUpdateMode: 1
   m_AlwaysDrawDynamicShadows: 0
-  m_UpdateShadowOnLightMovement: 0
+  m_UpdateShadowOnLightMovement: 1
   m_CachedShadowTranslationThreshold: 0.01
   m_CachedShadowAngularThreshold: 0.5
   m_BarnDoorAngle: 90
@@ -698,7 +698,7 @@ Light:
   m_Color: {r: 0.5990566, g: 0.87153393, b: 1, a: 1}
   m_Intensity: 524288
   m_Range: 150
-  m_SpotAngle: 120
+  m_SpotAngle: 140
   m_InnerSpotAngle: 1
   m_CookieSize: 10
   m_Shadows:
@@ -820,7 +820,7 @@ MonoBehaviour:
   m_ShadowResolution:
     m_Override: 512
     m_UseOverride: 0
-    m_Level: 3
+    m_Level: 0
   m_ShadowDimmer: 1
   m_VolumetricShadowDimmer: 1
   m_ShadowFadeDistance: 10000
@@ -835,7 +835,7 @@ MonoBehaviour:
   m_SlopeBias: 0.5
   m_ShadowUpdateMode: 1
   m_AlwaysDrawDynamicShadows: 0
-  m_UpdateShadowOnLightMovement: 0
+  m_UpdateShadowOnLightMovement: 1
   m_CachedShadowTranslationThreshold: 0.01
   m_CachedShadowAngularThreshold: 0.5
   m_BarnDoorAngle: 90
@@ -956,7 +956,7 @@ Light:
   m_Color: {r: 0.5990566, g: 0.87153393, b: 1, a: 1}
   m_Intensity: 524288
   m_Range: 150
-  m_SpotAngle: 120
+  m_SpotAngle: 140
   m_InnerSpotAngle: 1
   m_CookieSize: 10
   m_Shadows:
@@ -1078,7 +1078,7 @@ MonoBehaviour:
   m_ShadowResolution:
     m_Override: 512
     m_UseOverride: 0
-    m_Level: 3
+    m_Level: 0
   m_ShadowDimmer: 1
   m_VolumetricShadowDimmer: 1
   m_ShadowFadeDistance: 10000
@@ -1093,7 +1093,7 @@ MonoBehaviour:
   m_SlopeBias: 0.5
   m_ShadowUpdateMode: 1
   m_AlwaysDrawDynamicShadows: 0
-  m_UpdateShadowOnLightMovement: 0
+  m_UpdateShadowOnLightMovement: 1
   m_CachedShadowTranslationThreshold: 0.01
   m_CachedShadowAngularThreshold: 0.5
   m_BarnDoorAngle: 90
@@ -1173,7 +1173,7 @@ Light:
   m_Color: {r: 0.5990566, g: 0.87153393, b: 1, a: 1}
   m_Intensity: 524288
   m_Range: 150
-  m_SpotAngle: 120
+  m_SpotAngle: 140
   m_InnerSpotAngle: 1
   m_CookieSize: 10
   m_Shadows:
@@ -1295,7 +1295,7 @@ MonoBehaviour:
   m_ShadowResolution:
     m_Override: 512
     m_UseOverride: 0
-    m_Level: 3
+    m_Level: 0
   m_ShadowDimmer: 1
   m_VolumetricShadowDimmer: 1
   m_ShadowFadeDistance: 10000
@@ -1310,7 +1310,7 @@ MonoBehaviour:
   m_SlopeBias: 0.5
   m_ShadowUpdateMode: 1
   m_AlwaysDrawDynamicShadows: 0
-  m_UpdateShadowOnLightMovement: 0
+  m_UpdateShadowOnLightMovement: 1
   m_CachedShadowTranslationThreshold: 0.01
   m_CachedShadowAngularThreshold: 0.5
   m_BarnDoorAngle: 90
@@ -1390,7 +1390,7 @@ Light:
   m_Color: {r: 0.5990566, g: 0.87153393, b: 1, a: 1}
   m_Intensity: 524288
   m_Range: 150
-  m_SpotAngle: 120
+  m_SpotAngle: 140
   m_InnerSpotAngle: 1
   m_CookieSize: 10
   m_Shadows:
@@ -1512,7 +1512,7 @@ MonoBehaviour:
   m_ShadowResolution:
     m_Override: 512
     m_UseOverride: 0
-    m_Level: 3
+    m_Level: 0
   m_ShadowDimmer: 1
   m_VolumetricShadowDimmer: 1
   m_ShadowFadeDistance: 10000
@@ -1527,7 +1527,7 @@ MonoBehaviour:
   m_SlopeBias: 0.5
   m_ShadowUpdateMode: 1
   m_AlwaysDrawDynamicShadows: 0
-  m_UpdateShadowOnLightMovement: 0
+  m_UpdateShadowOnLightMovement: 1
   m_CachedShadowTranslationThreshold: 0.01
   m_CachedShadowAngularThreshold: 0.5
   m_BarnDoorAngle: 90
@@ -1607,7 +1607,7 @@ Light:
   m_Color: {r: 0.5990566, g: 0.87153393, b: 1, a: 1}
   m_Intensity: 524288
   m_Range: 150
-  m_SpotAngle: 120
+  m_SpotAngle: 140
   m_InnerSpotAngle: 1
   m_CookieSize: 10
   m_Shadows:
@@ -1729,7 +1729,7 @@ MonoBehaviour:
   m_ShadowResolution:
     m_Override: 512
     m_UseOverride: 0
-    m_Level: 3
+    m_Level: 0
   m_ShadowDimmer: 1
   m_VolumetricShadowDimmer: 1
   m_ShadowFadeDistance: 10000
@@ -1744,7 +1744,7 @@ MonoBehaviour:
   m_SlopeBias: 0.5
   m_ShadowUpdateMode: 1
   m_AlwaysDrawDynamicShadows: 0
-  m_UpdateShadowOnLightMovement: 0
+  m_UpdateShadowOnLightMovement: 1
   m_CachedShadowTranslationThreshold: 0.01
   m_CachedShadowAngularThreshold: 0.5
   m_BarnDoorAngle: 90
@@ -1824,7 +1824,7 @@ Light:
   m_Color: {r: 0.5990566, g: 0.87153393, b: 1, a: 1}
   m_Intensity: 524288
   m_Range: 150
-  m_SpotAngle: 120
+  m_SpotAngle: 140
   m_InnerSpotAngle: 1
   m_CookieSize: 10
   m_Shadows:
@@ -1946,7 +1946,7 @@ MonoBehaviour:
   m_ShadowResolution:
     m_Override: 512
     m_UseOverride: 0
-    m_Level: 3
+    m_Level: 0
   m_ShadowDimmer: 1
   m_VolumetricShadowDimmer: 1
   m_ShadowFadeDistance: 10000
@@ -1961,7 +1961,7 @@ MonoBehaviour:
   m_SlopeBias: 0.5
   m_ShadowUpdateMode: 1
   m_AlwaysDrawDynamicShadows: 0
-  m_UpdateShadowOnLightMovement: 0
+  m_UpdateShadowOnLightMovement: 1
   m_CachedShadowTranslationThreshold: 0.01
   m_CachedShadowAngularThreshold: 0.5
   m_BarnDoorAngle: 90
@@ -2041,7 +2041,7 @@ Light:
   m_Color: {r: 0.5990566, g: 0.87153393, b: 1, a: 1}
   m_Intensity: 524288
   m_Range: 150
-  m_SpotAngle: 120
+  m_SpotAngle: 140
   m_InnerSpotAngle: 1
   m_CookieSize: 10
   m_Shadows:
@@ -2163,7 +2163,7 @@ MonoBehaviour:
   m_ShadowResolution:
     m_Override: 512
     m_UseOverride: 0
-    m_Level: 3
+    m_Level: 0
   m_ShadowDimmer: 1
   m_VolumetricShadowDimmer: 1
   m_ShadowFadeDistance: 10000
@@ -2178,7 +2178,7 @@ MonoBehaviour:
   m_SlopeBias: 0.5
   m_ShadowUpdateMode: 1
   m_AlwaysDrawDynamicShadows: 0
-  m_UpdateShadowOnLightMovement: 0
+  m_UpdateShadowOnLightMovement: 1
   m_CachedShadowTranslationThreshold: 0.01
   m_CachedShadowAngularThreshold: 0.5
   m_BarnDoorAngle: 90
