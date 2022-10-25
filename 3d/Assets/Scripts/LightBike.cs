@@ -56,6 +56,8 @@ public class LightBike : MonoBehaviour
     private float accumulatedSize = 0;
     public GameObject explosion;
     public GameObject trail;
+    public Transform respawn;
+    public GameObject thisPlayer;
     
     private GameObject cameraAxis;
     private Camera camera;
@@ -138,7 +140,8 @@ public class LightBike : MonoBehaviour
         accumulatedSize += Time.deltaTime;
         if (tracker >= frameInterval && dot > 0){
             GameObject tempCollider = Instantiate(boxCollider, boxSpawnPosition.transform.position, Quaternion.LerpUnclamped(prevRotation, boxSpawnPosition.transform.rotation, boxPrevLerp));
-            tempCollider.transform.localScale = new Vector3(tempCollider.transform.localScale.x, tempCollider.transform.localScale.y, dot * accumulatedSize * 1.05f);
+            tempCollider.transform.localScale = new Vector3(tempCollider.transform.localScale.x, tempCollider.transform.localScale.y, dot * accumulatedSize);
+            tempCollider.GetComponent<LightTrailCollider>().parent = this;
             accumulatedSize = 0;
             tracker = 0;
             prevRotation = boxSpawnPosition.transform.rotation;
@@ -150,7 +153,8 @@ public class LightBike : MonoBehaviour
             transform.position,
             cameraPositionLerpRate * Time.fixedDeltaTime);
         float temp = cameraAxis.transform.eulerAngles.z > 180f ? cameraAxis.transform.eulerAngles.z - 360f : cameraAxis.transform.eulerAngles.z;
-        cameraAxis.transform.rotation = Quaternion.Lerp(cameraAxis.transform.rotation, transform.rotation * Quaternion.Euler(offset) * Quaternion.Euler(new Vector3(0f, 0f, -temp * cameraLeanMultiplier)), cameraRotationLerpRate * Time.fixedDeltaTime);
+        Quaternion targetRotation = Quaternion.LerpUnclamped(transform.rotation, Quaternion.Euler(transform.eulerAngles.x, transform.eulerAngles.y, 0f), cameraLeanMultiplier);
+        cameraAxis.transform.rotation = Quaternion.Lerp(cameraAxis.transform.rotation, targetRotation * Quaternion.Euler(offset), cameraRotationLerpRate * Time.fixedDeltaTime);
         Vector3 gravity = globalGravity * gravityScale * Vector3.up;
         RaycastHit hit;
         //if (Physics.Raycast(transform.position, rb.velocity.normalized - transform.up, out hit, 5f){
@@ -167,13 +171,25 @@ public class LightBike : MonoBehaviour
         rb.AddTorque(torqueVector * speed * speed);
     }
 
-    void OnCollisionEnter(Collision collision){
+    void OnTriggerEnter(Collider collision){
         if (collision.gameObject.tag == "LightTrail")
         {
             Instantiate(explosion, transform.position, Quaternion.identity);
-            trail.transform.parent = null;
-            Destroy(trail, 15f);
-            Destroy(gameObject);
+            //trail.transform.parent = null;
+            //Destroy(trail, 15f);
+            //Destroy(cameraAxis, 2f);
+            Invoke("Respawn", 2f);
+            gameObject.SetActive(false);
+
         }
+    }
+
+    void Respawn()
+    {
+        gameObject.SetActive(true);
+        gameObject.transform.position = respawn.position;
+        gameObject.transform.rotation = respawn.rotation;
+
+        Debug.Log("respawned!");
     }
 }
