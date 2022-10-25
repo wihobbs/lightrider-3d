@@ -55,6 +55,7 @@ public class LightBike : MonoBehaviour
     private int tracker = 0;
     private float accumulatedSize = 0;
     public GameObject explosion;
+    public GameObject trail;
     
     private GameObject cameraAxis;
     private Camera camera;
@@ -170,6 +171,8 @@ public class LightBike : MonoBehaviour
         if (collision.gameObject.tag == "LightTrail")
         {
             Instantiate(explosion, transform.position, Quaternion.identity);
+            trail.transform.parent = null;
+            Destroy(trail, 15f);
             Destroy(gameObject);
         }
     }

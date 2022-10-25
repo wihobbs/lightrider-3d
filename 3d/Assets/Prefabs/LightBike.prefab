@@ -2040,6 +2040,7 @@ MonoBehaviour:
   frameInterval: 2
   boxPrevLerp: -0.14
   explosion: {fileID: 4245210838280974974, guid: 6c20d9395020d3140804e7a584bd3bde, type: 3}
+  trail: {fileID: 4704120699504580434}
   currentSteer: 0
 --- !u!65 &5375672984799078019
 BoxCollider:
