@@ -8,20 +8,36 @@ public class Timer : MonoBehaviour
     [SerializeField] float timeValue = 90; // time of timer
     [SerializeField] TMP_Text timeText;
 
+    [SerializeField] GameObject timerUi;
+    [SerializeField] GameObject timeUpMenuUi;
+
     // tick
     void Update()
     {
         if(timeValue > 0){
             timeValue -= Time.deltaTime; 
+            if(timeValue < 5){
+                // do something to make the players stressed like change color 
+                timeText.color = Color.red;
+            }
         }
         else{
             // to do:
-            // end the game
+            // show timeup
+            TimeUp();
             
             // lock the time value to zero
             timeValue = 0;
         }
         DisplayTime(timeValue);
+    }
+
+    void TimeUp(){
+        // you can still move, but only at half speed 
+        Time.timeScale = 0.5f;
+        // hide the timer
+        timerUi.SetActive(false);
+        timeUpMenuUi.SetActive(true);
     }
 
     void DisplayTime(float timeToDisplay){
