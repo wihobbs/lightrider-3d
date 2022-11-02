@@ -5,7 +5,10 @@ using TMPro;
 
 public class Timer : MonoBehaviour
 {
-    [SerializeField] float timeValue = 90; // time of timer
+    // starting time of timer
+    public static float startTimeValue = 90;
+    // elapsed time of timer
+    public static float timeValue = startTimeValue; 
     [SerializeField] TMP_Text timeText;
 
     [SerializeField] GameObject timerUi;
@@ -50,5 +53,8 @@ public class Timer : MonoBehaviour
         float milliseconds = timeToDisplay%1 * 1000;
 
         timeText.text = string.Format("{0:00}:{1:00}:{2:000}",minutes,seconds,milliseconds);
+    }
+    public static void updateTime(float newTimeValue){
+        timeValue = newTimeValue;
     }
 }
