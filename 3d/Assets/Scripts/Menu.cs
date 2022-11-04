@@ -9,11 +9,16 @@ public class Menu : MonoBehaviour
         // play new game
         // timer to zero
         Timer.timeValue = Timer.startTimeValue;
+
+        SaveSystem.LOAD_FROM_SAVE = false;
+
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
     }
 
     public void ResumeGame(){
         if(SaveSystem.TimeSaved()){
+            SaveSystem.LOAD_FROM_SAVE = true;
+
             // there was a time saved
             // resume old game
             TimerData data = SaveSystem.LoadTime();

@@ -9,6 +9,8 @@ public class PauseMenu : MonoBehaviour
 
     public Timer timer;
 
+    public List<GameObject> playerObjects = new List<GameObject>();
+
     public GameObject pauseMenuUI;
 
     void Update(){
@@ -48,5 +50,8 @@ public class PauseMenu : MonoBehaviour
 
     public void Save(){
         SaveSystem.SaveTime();
+        foreach(GameObject player in this.playerObjects){
+            player.GetComponent<LightBike>().Save();
+        }
     }
 }

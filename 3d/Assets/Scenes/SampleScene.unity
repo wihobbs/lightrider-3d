@@ -4832,6 +4832,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   timer: {fileID: 0}
+  playerObjects:
+  - {fileID: 79911414}
+  - {fileID: 939734252}
   pauseMenuUI: {fileID: 304031545}
 --- !u!1 &1023626962
 GameObject:
@@ -6033,6 +6036,10 @@ PrefabInstance:
     - target: {fileID: 4704120700225040871, guid: c2d319ee23985ce45a1f58dd4d8e1baa, type: 3}
       propertyPath: throttleAxis
       value: Throttle2
+      objectReference: {fileID: 0}
+    - target: {fileID: 4704120700225040871, guid: c2d319ee23985ce45a1f58dd4d8e1baa, type: 3}
+      propertyPath: PLAYER_NUMBER
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4704120700225040871, guid: c2d319ee23985ce45a1f58dd4d8e1baa, type: 3}
       propertyPath: verticalAxisName
@@ -7526,6 +7533,10 @@ PrefabInstance:
     - target: {fileID: 4704120700225040871, guid: c2d319ee23985ce45a1f58dd4d8e1baa, type: 3}
       propertyPath: lightColor.r
       value: 12271.9375
+      objectReference: {fileID: 0}
+    - target: {fileID: 4704120700225040871, guid: c2d319ee23985ce45a1f58dd4d8e1baa, type: 3}
+      propertyPath: PLAYER_NUMBER
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 4704120700225040871, guid: c2d319ee23985ce45a1f58dd4d8e1baa, type: 3}
       propertyPath: verticalAxisName
