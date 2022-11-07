@@ -71,6 +71,11 @@ public class LightBike : MonoBehaviour
     private float dot;
 
 
+    // audio 
+    public AudioSource deathSound;
+    public AudioSource accelSound;
+    public AudioSource constantAccelSound;
+    public AudioSource decelSound;
     
     // Start is called before the first frame update\
     void Start()
@@ -129,8 +134,9 @@ public class LightBike : MonoBehaviour
 
         camera.fieldOfView = Mathf.Pow((rb.velocity.magnitude * 0.025f), 2) * (cameraMinMax.y - cameraMinMax.x) + cameraMinMax.x;
 
-        if (brakeInput > 0 && dot * gear < 0.5f)
+        if (brakeInput > 0 && dot * gear < 0.5f){
             forward = !forward;
+        }
         
         foreach(MeshMaterialPair m in lights){
             m.mr.materials[m.mat].SetColor("_EmissiveColor", lightColor);
@@ -145,6 +151,13 @@ public class LightBike : MonoBehaviour
             accumulatedSize = 0;
             tracker = 0;
             prevRotation = boxSpawnPosition.transform.rotation;
+        }
+
+        // if moving play accel
+        if(rb.velocity.magnitude > 3f && !this.constantAccelSound.isPlaying){
+            this.constantAccelSound.PlayOneShot(this.constantAccelSound.clip);
+        }else{
+            this.constantAccelSound.Stop();
         }
     }
 
@@ -174,13 +187,16 @@ public class LightBike : MonoBehaviour
     void OnTriggerEnter(Collider collision){
         if (collision.gameObject.tag == "LightTrail")
         {
+
             Instantiate(explosion, transform.position, Quaternion.identity);
             //trail.transform.parent = null;
             //Destroy(trail, 15f);
             //Destroy(cameraAxis, 2f);
             Invoke("Respawn", 2f);
             gameObject.SetActive(false);
-
+            // play sound
+            this.deathSound.Play();
+            Debug.Log("DIE");
         }
     }
 
