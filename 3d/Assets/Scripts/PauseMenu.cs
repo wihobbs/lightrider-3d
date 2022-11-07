@@ -11,6 +11,12 @@ public class PauseMenu : MonoBehaviour
 
     public GameObject pauseMenuUI;
 
+    public AudioSource btnClickSound;
+
+    public void playBtnClickSound(){
+        this.btnClickSound.Play();
+    }
+
     void Update(){
         if(Input.GetKeyDown(KeyCode.Escape)){
             if(GameIsPaused){

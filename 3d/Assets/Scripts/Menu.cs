@@ -5,6 +5,11 @@ using UnityEngine.SceneManagement;
 
 public class Menu : MonoBehaviour
 {
+    public AudioSource btnClickSound;
+
+    public void playBtnClickSound(){
+        this.btnClickSound.Play();
+    }
     public void PlayNewGame(){
         // play new game
         // timer to zero
