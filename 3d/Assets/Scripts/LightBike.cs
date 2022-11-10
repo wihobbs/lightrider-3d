@@ -72,15 +72,16 @@ public class LightBike : MonoBehaviour
 
 
     // audio 
-    public AudioSource deathSound;
-    public AudioSource accelSound;
-    public AudioSource constantAccelSound;
+    public AudioSource worldAudioSrc;
+    public AudioClip deathSound;
     public AudioSource decelSound;
+    AudioSource audioSrc;
     
     // Start is called before the first frame update\
     void Start()
     {
         rb = GetComponent<Rigidbody>();
+        audioSrc = GetComponent<AudioSource>();
         cameraAxis = transform.Find("cameraAxis").gameObject;
         cameraAxis.transform.parent = null;
         camera = cameraAxis.transform.Find("Camera").GetComponent<Camera>();
@@ -153,12 +154,7 @@ public class LightBike : MonoBehaviour
             prevRotation = boxSpawnPosition.transform.rotation;
         }
 
-        // if moving play accel
-        if(rb.velocity.magnitude > 3f && !this.constantAccelSound.isPlaying){
-            this.constantAccelSound.PlayOneShot(this.constantAccelSound.clip);
-        }else{
-            this.constantAccelSound.Stop();
-        }
+        audioSrc.pitch = Mathf.Clamp(Mathf.Pow(currentSpeed * 0.05f, 0.5f), 0f, 1.4f);
     }
 
     void FixedUpdate(){
@@ -193,9 +189,10 @@ public class LightBike : MonoBehaviour
             //Destroy(trail, 15f);
             //Destroy(cameraAxis, 2f);
             Invoke("Respawn", 2f);
+            audioSrc.pitch = 0f;
             gameObject.SetActive(false);
             // play sound
-            this.deathSound.Play();
+            worldAudioSrc.PlayOneShot(deathSound, 1f);
             Debug.Log("DIE");
         }
     }
