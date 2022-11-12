@@ -6,6 +6,24 @@ using UnityEngine.SceneManagement;
 public class Menu : MonoBehaviour
 {
     public AudioSource btnClickSound;
+    public GameObject NoSaveDataPresentText;
+
+    // bad design, but fast fix
+    private bool toasting = false;
+
+    public void SetInactiveNoSaveDataPresent(){
+        this.NoSaveDataPresentText.SetActive(false);
+        this.toasting = false;
+    }
+
+    public void ShowToastNoSaveDataPresent(){
+        this.NoSaveDataPresentText.SetActive(true);
+        if(!this.toasting){
+            // toast
+            Invoke("SetInactiveNoSaveDataPresent",2.5f);
+        }
+        this.toasting = true;
+    }
 
     public void playBtnClickSound(){
         this.btnClickSound.Play();
@@ -27,6 +45,7 @@ public class Menu : MonoBehaviour
             SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
         }else{
             Debug.Log("Menu.cs: No data found.");
+            ShowToastNoSaveDataPresent();
         }
     }
 
