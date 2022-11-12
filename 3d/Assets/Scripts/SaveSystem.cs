@@ -23,6 +23,7 @@ public static class SaveSystem
 
     public static TimerData LoadTime(){
         string path = Application.persistentDataPath + "/time.bindata";
+        Debug.Log(path);
         if(File.Exists(path)){
             BinaryFormatter formatter = new BinaryFormatter();
             FileStream stream = new FileStream(path,FileMode.Open);
