@@ -18,6 +18,8 @@ public class PauseMenu : MonoBehaviour
     // bad design, but fast fix
     private bool toasting = false;
 
+    [SerializeField] List<GameObject> playerObjects = new List<GameObject>();
+
     public void playBtnClickSound(){
         this.btnClickSound.Play();
     }
@@ -72,6 +74,9 @@ public class PauseMenu : MonoBehaviour
 
     public void Save(){
         SaveSystem.SaveTime();
+        foreach(GameObject player in this.playerObjects){
+            player.GetComponent<LightBike>().Save();
+        }
         this.ShowToastSavedData();
     }
 }

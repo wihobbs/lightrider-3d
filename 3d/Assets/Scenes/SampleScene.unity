@@ -3997,6 +3997,9 @@ MonoBehaviour:
   pauseMenuUI: {fileID: 304031545}
   btnClickSound: {fileID: 1562420633}
   SavedDataText: {fileID: 2048770660}
+  playerObjects:
+  - {fileID: 79911414}
+  - {fileID: 939734252}
 --- !u!114 &1017737934
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5228,6 +5231,10 @@ PrefabInstance:
       value: Throttle2
       objectReference: {fileID: 0}
     - target: {fileID: 4704120700225040871, guid: c2d319ee23985ce45a1f58dd4d8e1baa, type: 3}
+      propertyPath: PLAYER_NUMBER
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4704120700225040871, guid: c2d319ee23985ce45a1f58dd4d8e1baa, type: 3}
       propertyPath: worldAudioSrc
       value: 
       objectReference: {fileID: 2099674173}
@@ -6295,6 +6302,10 @@ PrefabInstance:
     - target: {fileID: 4704120700225040871, guid: c2d319ee23985ce45a1f58dd4d8e1baa, type: 3}
       propertyPath: lightColor.r
       value: 12271.9375
+      objectReference: {fileID: 0}
+    - target: {fileID: 4704120700225040871, guid: c2d319ee23985ce45a1f58dd4d8e1baa, type: 3}
+      propertyPath: PLAYER_NUMBER
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 4704120700225040871, guid: c2d319ee23985ce45a1f58dd4d8e1baa, type: 3}
       propertyPath: worldAudioSrc

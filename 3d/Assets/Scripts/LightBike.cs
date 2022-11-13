@@ -97,6 +97,28 @@ public class LightBike : MonoBehaviour
         foreach(MeshMaterialPair m in lights){
             //m.mr.materials[m.mat].color = lightColor;
         }
+        // if load from save, load now
+        if(SaveSystem.LOAD_FROM_SAVE){
+            Debug.Log("LOADING FROM SAVE");
+            Vector3 savedPosition;
+            PlayerData savedData;
+            if(this.PLAYER_NUMBER == 1){
+                // load player one
+                savedData = SaveSystem.LoadPlayer(1);
+            }
+            else{
+                // load player 2
+                savedData = SaveSystem.LoadPlayer(2);
+            }
+            if(savedData == null){
+                return;
+            }
+            savedPosition.x = savedData.position[0];
+            savedPosition.y = savedData.position[1];
+            savedPosition.z = savedData.position[2];
+
+            this.transform.position = savedPosition;
+        }
     }
 
     // Update is called once per frame
@@ -204,8 +226,11 @@ public class LightBike : MonoBehaviour
     {
         gameObject.SetActive(true);
         gameObject.transform.position = respawn.position;
-        gameObject.transform.rotation = respawn.rotation;
 
         Debug.Log("respawned!");
+    }
+
+    public void Save(){
+        SaveSystem.SavePlayer(this,this.PLAYER_NUMBER);
     }
 }
