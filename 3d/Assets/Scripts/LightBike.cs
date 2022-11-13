@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
 
 public class LightBike : MonoBehaviour
 {
@@ -79,6 +80,9 @@ public class LightBike : MonoBehaviour
 
     // something to recognize player 1 from player 2
     public int PLAYER_NUMBER;
+
+    // elims for other player
+    public TMP_Text otherPlayerElimText;
     
     // Start is called before the first frame update\
     void Start()
@@ -219,6 +223,12 @@ public class LightBike : MonoBehaviour
             // play sound
             worldAudioSrc.PlayOneShot(deathSound, 1f);
             Debug.Log("DIE");
+
+
+            // give other player an elim
+            int otherPlayerElimCount = int.Parse(this.otherPlayerElimText.text);
+            otherPlayerElimCount += 1;
+            this.otherPlayerElimText.text = otherPlayerElimCount.ToString();
         }
     }
 
