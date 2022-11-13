@@ -2,6 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using TMPro;
+using UnityEngine.UI;
 
 public class Menu : MonoBehaviour
 {
@@ -53,7 +55,7 @@ public class Menu : MonoBehaviour
             this.playBtnClickSound();
             TimerData data = SaveSystem.LoadTime();
             // update static value of class
-            Timer.updateTime(data.timeValue);
+            PauseMenu.updateTime(data.timeValue);
             SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
         }else{
             Debug.Log("Menu.cs: No data found.");

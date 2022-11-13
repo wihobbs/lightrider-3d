@@ -9,7 +9,7 @@ public class TimerData
     // to do: do better!
     public float timeValue;
 
-    public TimerData(){
-        this.timeValue = Timer.timeValue;
+    public TimerData(float time){
+        this.timeValue = time;
     }
 }

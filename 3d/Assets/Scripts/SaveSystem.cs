@@ -14,7 +14,7 @@ public static class SaveSystem
         BinaryFormatter formatter = new BinaryFormatter();
         string path = Application.persistentDataPath + "/time.bindata";
         FileStream stream = new FileStream(path,FileMode.Create);
-        TimerData data = new TimerData();
+        TimerData data = new TimerData(PauseMenu.timeValue);
         // write data
         formatter.Serialize(stream,data);
         Debug.Log("Saved to: " + path);

@@ -19,7 +19,7 @@ MonoBehaviour:
     width: 1920
     height: 903
   m_ShowMode: 4
-  m_Title: Game
+  m_Title: "\u30B2\u30FC\u30E0"
   m_RootView: {fileID: 2}
   m_MinSize: {x: 875, y: 300}
   m_MaxSize: {x: 10000, y: 10000}
@@ -119,7 +119,7 @@ MonoBehaviour:
   m_MinSize: {x: 300, y: 200}
   m_MaxSize: {x: 24288, y: 16192}
   vertical: 0
-  controlID: 77
+  controlID: 19
 --- !u!114 &6
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -299,9 +299,9 @@ MonoBehaviour:
   m_Pos:
     serializedVersion: 2
     x: 315
-    y: 131
+    y: 137
     width: 1011
-    height: 487
+    height: 483
   m_ViewDataDictionary: {fileID: 0}
   m_OverlayCanvas:
     m_LastAppliedPresetName: Default
@@ -312,7 +312,7 @@ MonoBehaviour:
   m_ShowGizmos: 0
   m_TargetDisplay: 0
   m_ClearColor: {r: 0, g: 0, b: 0, a: 0}
-  m_TargetSize: {x: 1011, y: 466}
+  m_TargetSize: {x: 1011, y: 462}
   m_TextureFilterMode: 0
   m_TextureHideFlags: 61
   m_RenderIMGUI: 1
@@ -329,8 +329,8 @@ MonoBehaviour:
     vZoomLockedByDefault: 0
     m_HBaseRangeMin: -505.5
     m_HBaseRangeMax: 505.5
-    m_VBaseRangeMin: -233
-    m_VBaseRangeMax: 233
+    m_VBaseRangeMin: -231
+    m_VBaseRangeMax: 231
     m_HAllowExceedBaseRangeMin: 1
     m_HAllowExceedBaseRangeMax: 1
     m_VAllowExceedBaseRangeMin: 1
@@ -349,9 +349,9 @@ MonoBehaviour:
       x: 0
       y: 21
       width: 1011
-      height: 466
+      height: 462
     m_Scale: {x: 1, y: 1}
-    m_Translation: {x: 505.5, y: 233}
+    m_Translation: {x: 505.5, y: 231}
     m_MarginLeft: 0
     m_MarginRight: 0
     m_MarginTop: 0
@@ -359,12 +359,12 @@ MonoBehaviour:
     m_LastShownAreaInsideMargins:
       serializedVersion: 2
       x: -505.5
-      y: -233
+      y: -231
       width: 1011
-      height: 466
+      height: 462
     m_MinimalGUI: 1
   m_defaultScale: 1
-  m_LastWindowPixelSize: {x: 1011, y: 487}
+  m_LastWindowPixelSize: {x: 1011, y: 483}
   m_ClearInEditMode: 1
   m_NoCameraWarning: 1
   m_LowResolutionForAspectRatios: 00000000000000000000
@@ -401,23 +401,23 @@ MonoBehaviour:
   m_SceneHierarchy:
     m_TreeViewState:
       scrollPos: {x: 0, y: 0}
-      m_SelectedIDs: 
+      m_SelectedIDs: f4790000
       m_LastClickedID: 0
-      m_ExpandedIDs: 32fbffff
+      m_ExpandedIDs: ce11ffff38fbffff067200002c72000096730000
       m_RenameOverlay:
         m_UserAcceptedRename: 0
-        m_Name: 
-        m_OriginalName: 
+        m_Name: QuitButton
+        m_OriginalName: QuitButton
         m_EditFieldRect:
           serializedVersion: 2
           x: 0
           y: 0
           width: 0
           height: 0
-        m_UserData: 0
+        m_UserData: -51888
         m_IsWaitingForDelay: 0
         m_IsRenaming: 0
-        m_OriginalEventType: 11
+        m_OriginalEventType: 0
         m_IsRenamingFilename: 0
         m_ClientGUIView: {fileID: 8}
       m_SearchString: 
@@ -685,9 +685,9 @@ MonoBehaviour:
   m_PlayAudio: 0
   m_AudioPlay: 0
   m_Position:
-    m_Target: {x: 478.6195, y: 210.56729, z: 56.28453}
+    m_Target: {x: 622.04694, y: 235.86244, z: -0.33750495}
     speed: 2
-    m_Value: {x: 478.6195, y: 210.56729, z: 56.28453}
+    m_Value: {x: 622.04694, y: 235.86244, z: -0.33750495}
   m_RenderMode: 0
   m_CameraMode:
     drawMode: 0
@@ -738,9 +738,9 @@ MonoBehaviour:
     speed: 2
     m_Value: {x: 0, y: 0, z: 0, w: 1}
   m_Size:
-    m_Target: 197.34395
+    m_Target: 270.92017
     speed: 2
-    m_Value: 197.34395
+    m_Value: 270.92017
   m_Ortho:
     m_Target: 1
     speed: 2
@@ -876,7 +876,7 @@ MonoBehaviour:
   m_ListAreaState:
     m_SelectedInstanceIDs: 
     m_LastClickedInstanceID: 0
-    m_HadKeyboardFocusLastEvent: 0
+    m_HadKeyboardFocusLastEvent: 1
     m_ExpandedInstanceIDs: c6230000d6a6000000000000
     m_RenameOverlay:
       m_UserAcceptedRename: 0
@@ -926,9 +926,9 @@ MonoBehaviour:
   m_Pos:
     serializedVersion: 2
     x: 0
-    y: 639
+    y: 641
     width: 1327
-    height: 330
+    height: 328
   m_ViewDataDictionary: {fileID: 0}
   m_OverlayCanvas:
     m_LastAppliedPresetName: Default
@@ -1132,13 +1132,9 @@ MonoBehaviour:
                 - width: 150
                   sortedAscending: 1
                   headerContent:
-                    m_Text: Called From
+                    m_Text: "\u547C\u3073\u51FA\u3057\u5143"
                     m_Image: {fileID: 0}
-                    m_Tooltip: 'Parents the selected function is called from
-
-
-                      (Press
-                      ''F'' for frame selection)'
+                    m_Tooltip: "\u9078\u629E\u3057\u305F\u95A2\u6570\u3092\u547C\u3073\u51FA\u3059\u89AA\n\n('F'\u3092\u62BC\u3059\u3068\u30D5\u30EC\u30FC\u30E0\u9078\u629E)"
                   contextMenuText: 
                   headerTextAlignment: 0
                   sortingArrowAlignment: 2
@@ -1151,9 +1147,9 @@ MonoBehaviour:
                 - width: 60
                   sortedAscending: 0
                   headerContent:
-                    m_Text: Calls
+                    m_Text: "\u547C\u3073\u51FA\u3057"
                     m_Image: {fileID: 0}
-                    m_Tooltip: Total number of calls in a selected frame
+                    m_Tooltip: "\u9078\u629E\u30D5\u30EC\u30FC\u30E0\u306B\u304A\u3051\u308B\u547C\u3073\u51FA\u3057\u306E\u7DCF\u6570"
                   contextMenuText: 
                   headerTextAlignment: 0
                   sortingArrowAlignment: 2
@@ -1166,7 +1162,7 @@ MonoBehaviour:
                 - width: 60
                   sortedAscending: 0
                   headerContent:
-                    m_Text: GC Alloc
+                    m_Text: "GC \u30A2\u30ED\u30B1\u30FC\u30B7\u30E7\u30F3"
                     m_Image: {fileID: 0}
                     m_Tooltip: 
                   contextMenuText: 
@@ -1181,9 +1177,9 @@ MonoBehaviour:
                 - width: 60
                   sortedAscending: 0
                   headerContent:
-                    m_Text: Time ms
+                    m_Text: "\u6642\u9593 (\u30DF\u30EA\u79D2)"
                     m_Image: {fileID: 0}
-                    m_Tooltip: Total time the selected function spends within a parent
+                    m_Tooltip: "\u9078\u629E\u3057\u305F\u95A2\u6570\u304C\u89AA\u95A2\u6570\u5185\u3067\u8CBB\u3084\u3059\u7DCF\u6642\u9593"
                   contextMenuText: 
                   headerTextAlignment: 0
                   sortingArrowAlignment: 2
@@ -1196,10 +1192,9 @@ MonoBehaviour:
                 - width: 60
                   sortedAscending: 0
                   headerContent:
-                    m_Text: Time %
+                    m_Text: "\u6642\u9593 %"
                     m_Image: {fileID: 0}
-                    m_Tooltip: Shows how often the selected function was called from
-                      the parent call
+                    m_Tooltip: "\u89AA\u306E\u547C\u3073\u51FA\u3057\u304B\u3089\u9078\u629E\u3057\u305F\u95A2\u6570\u304C\u547C\u3073\u51FA\u3055\u308C\u308B\u56DE\u6570\u3092\u8868\u793A"
                   contextMenuText: 
                   headerTextAlignment: 0
                   sortingArrowAlignment: 2
@@ -1239,13 +1234,9 @@ MonoBehaviour:
                 - width: 150
                   sortedAscending: 1
                   headerContent:
-                    m_Text: Called From
+                    m_Text: "\u547C\u3073\u51FA\u3057\u5143"
                     m_Image: {fileID: 0}
-                    m_Tooltip: 'Parents the selected function is called from
-
-
-                      (Press
-                      ''F'' for frame selection)'
+                    m_Tooltip: "\u9078\u629E\u3057\u305F\u95A2\u6570\u3092\u547C\u3073\u51FA\u3059\u89AA\n\n('F'\u3092\u62BC\u3059\u3068\u30D5\u30EC\u30FC\u30E0\u9078\u629E)"
                   contextMenuText: 
                   headerTextAlignment: 0
                   sortingArrowAlignment: 2
@@ -1258,9 +1249,9 @@ MonoBehaviour:
                 - width: 60
                   sortedAscending: 0
                   headerContent:
-                    m_Text: Calls
+                    m_Text: "\u547C\u3073\u51FA\u3057"
                     m_Image: {fileID: 0}
-                    m_Tooltip: Total number of calls in a selected frame
+                    m_Tooltip: "\u9078\u629E\u30D5\u30EC\u30FC\u30E0\u306B\u304A\u3051\u308B\u547C\u3073\u51FA\u3057\u306E\u7DCF\u6570"
                   contextMenuText: 
                   headerTextAlignment: 0
                   sortingArrowAlignment: 2
@@ -1273,7 +1264,7 @@ MonoBehaviour:
                 - width: 60
                   sortedAscending: 0
                   headerContent:
-                    m_Text: GC Alloc
+                    m_Text: "GC \u30A2\u30ED\u30B1\u30FC\u30B7\u30E7\u30F3"
                     m_Image: {fileID: 0}
                     m_Tooltip: 
                   contextMenuText: 
@@ -1288,9 +1279,9 @@ MonoBehaviour:
                 - width: 60
                   sortedAscending: 0
                   headerContent:
-                    m_Text: Time ms
+                    m_Text: "\u6642\u9593 (\u30DF\u30EA\u79D2)"
                     m_Image: {fileID: 0}
-                    m_Tooltip: Total time the selected function spends within a parent
+                    m_Tooltip: "\u9078\u629E\u3057\u305F\u95A2\u6570\u304C\u89AA\u95A2\u6570\u5185\u3067\u8CBB\u3084\u3059\u7DCF\u6642\u9593"
                   contextMenuText: 
                   headerTextAlignment: 0
                   sortingArrowAlignment: 2
@@ -1303,10 +1294,9 @@ MonoBehaviour:
                 - width: 60
                   sortedAscending: 0
                   headerContent:
-                    m_Text: Time %
+                    m_Text: "\u6642\u9593 %"
                     m_Image: {fileID: 0}
-                    m_Tooltip: Shows how often the selected function was called from
-                      the parent call
+                    m_Tooltip: "\u89AA\u306E\u547C\u3073\u51FA\u3057\u304B\u3089\u9078\u629E\u3057\u305F\u95A2\u6570\u304C\u547C\u3073\u51FA\u3055\u308C\u308B\u56DE\u6570\u3092\u8868\u793A"
                   contextMenuText: 
                   headerTextAlignment: 0
                   sortingArrowAlignment: 2
@@ -1470,13 +1460,9 @@ MonoBehaviour:
                 - width: 150
                   sortedAscending: 1
                   headerContent:
-                    m_Text: Called From
+                    m_Text: "\u547C\u3073\u51FA\u3057\u5143"
                     m_Image: {fileID: 0}
-                    m_Tooltip: 'Parents the selected function is called from
-
-
-                      (Press
-                      ''F'' for frame selection)'
+                    m_Tooltip: "\u9078\u629E\u3057\u305F\u95A2\u6570\u3092\u547C\u3073\u51FA\u3059\u89AA\n\n('F'\u3092\u62BC\u3059\u3068\u30D5\u30EC\u30FC\u30E0\u9078\u629E)"
                   contextMenuText: 
                   headerTextAlignment: 0
                   sortingArrowAlignment: 2
@@ -1489,9 +1475,9 @@ MonoBehaviour:
                 - width: 60
                   sortedAscending: 0
                   headerContent:
-                    m_Text: Calls
+                    m_Text: "\u547C\u3073\u51FA\u3057"
                     m_Image: {fileID: 0}
-                    m_Tooltip: Total number of calls in a selected frame
+                    m_Tooltip: "\u9078\u629E\u30D5\u30EC\u30FC\u30E0\u306B\u304A\u3051\u308B\u547C\u3073\u51FA\u3057\u306E\u7DCF\u6570"
                   contextMenuText: 
                   headerTextAlignment: 0
                   sortingArrowAlignment: 2
@@ -1504,7 +1490,7 @@ MonoBehaviour:
                 - width: 60
                   sortedAscending: 0
                   headerContent:
-                    m_Text: GC Alloc
+                    m_Text: "GC \u30A2\u30ED\u30B1\u30FC\u30B7\u30E7\u30F3"
                     m_Image: {fileID: 0}
                     m_Tooltip: 
                   contextMenuText: 
@@ -1519,9 +1505,9 @@ MonoBehaviour:
                 - width: 60
                   sortedAscending: 0
                   headerContent:
-                    m_Text: Time ms
+                    m_Text: "\u6642\u9593 (\u30DF\u30EA\u79D2)"
                     m_Image: {fileID: 0}
-                    m_Tooltip: Total time the selected function spends within a parent
+                    m_Tooltip: "\u9078\u629E\u3057\u305F\u95A2\u6570\u304C\u89AA\u95A2\u6570\u5185\u3067\u8CBB\u3084\u3059\u7DCF\u6642\u9593"
                   contextMenuText: 
                   headerTextAlignment: 0
                   sortingArrowAlignment: 2
@@ -1534,10 +1520,9 @@ MonoBehaviour:
                 - width: 60
                   sortedAscending: 0
                   headerContent:
-                    m_Text: Time %
+                    m_Text: "\u6642\u9593 %"
                     m_Image: {fileID: 0}
-                    m_Tooltip: Shows how often the selected function was called from
-                      the parent call
+                    m_Tooltip: "\u89AA\u306E\u547C\u3073\u51FA\u3057\u304B\u3089\u9078\u629E\u3057\u305F\u95A2\u6570\u304C\u547C\u3073\u51FA\u3055\u308C\u308B\u56DE\u6570\u3092\u8868\u793A"
                   contextMenuText: 
                   headerTextAlignment: 0
                   sortingArrowAlignment: 2
@@ -1577,13 +1562,9 @@ MonoBehaviour:
                 - width: 150
                   sortedAscending: 1
                   headerContent:
-                    m_Text: Called From
+                    m_Text: "\u547C\u3073\u51FA\u3057\u5143"
                     m_Image: {fileID: 0}
-                    m_Tooltip: 'Parents the selected function is called from
-
-
-                      (Press
-                      ''F'' for frame selection)'
+                    m_Tooltip: "\u9078\u629E\u3057\u305F\u95A2\u6570\u3092\u547C\u3073\u51FA\u3059\u89AA\n\n('F'\u3092\u62BC\u3059\u3068\u30D5\u30EC\u30FC\u30E0\u9078\u629E)"
                   contextMenuText: 
                   headerTextAlignment: 0
                   sortingArrowAlignment: 2
@@ -1596,9 +1577,9 @@ MonoBehaviour:
                 - width: 60
                   sortedAscending: 0
                   headerContent:
-                    m_Text: Calls
+                    m_Text: "\u547C\u3073\u51FA\u3057"
                     m_Image: {fileID: 0}
-                    m_Tooltip: Total number of calls in a selected frame
+                    m_Tooltip: "\u9078\u629E\u30D5\u30EC\u30FC\u30E0\u306B\u304A\u3051\u308B\u547C\u3073\u51FA\u3057\u306E\u7DCF\u6570"
                   contextMenuText: 
                   headerTextAlignment: 0
                   sortingArrowAlignment: 2
@@ -1611,7 +1592,7 @@ MonoBehaviour:
                 - width: 60
                   sortedAscending: 0
                   headerContent:
-                    m_Text: GC Alloc
+                    m_Text: "GC \u30A2\u30ED\u30B1\u30FC\u30B7\u30E7\u30F3"
                     m_Image: {fileID: 0}
                     m_Tooltip: 
                   contextMenuText: 
@@ -1626,9 +1607,9 @@ MonoBehaviour:
                 - width: 60
                   sortedAscending: 0
                   headerContent:
-                    m_Text: Time ms
+                    m_Text: "\u6642\u9593 (\u30DF\u30EA\u79D2)"
                     m_Image: {fileID: 0}
-                    m_Tooltip: Total time the selected function spends within a parent
+                    m_Tooltip: "\u9078\u629E\u3057\u305F\u95A2\u6570\u304C\u89AA\u95A2\u6570\u5185\u3067\u8CBB\u3084\u3059\u7DCF\u6642\u9593"
                   contextMenuText: 
                   headerTextAlignment: 0
                   sortingArrowAlignment: 2
@@ -1641,10 +1622,9 @@ MonoBehaviour:
                 - width: 60
                   sortedAscending: 0
                   headerContent:
-                    m_Text: Time %
+                    m_Text: "\u6642\u9593 %"
                     m_Image: {fileID: 0}
-                    m_Tooltip: Shows how often the selected function was called from
-                      the parent call
+                    m_Tooltip: "\u89AA\u306E\u547C\u3073\u51FA\u3057\u304B\u3089\u9078\u629E\u3057\u305F\u95A2\u6570\u304C\u547C\u3073\u51FA\u3055\u308C\u308B\u56DE\u6570\u3092\u8868\u793A"
                   contextMenuText: 
                   headerTextAlignment: 0
                   sortingArrowAlignment: 2
