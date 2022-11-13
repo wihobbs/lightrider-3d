@@ -1625,8 +1625,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   btnClickSound: {fileID: 1261200435}
-  NoSaveDataPresentText: {fileID: 153313891}
   btnClickInvalidSound: {fileID: 1097975565}
+  NoSaveDataPresentText: {fileID: 153313891}
 --- !u!1 &569068576
 GameObject:
   m_ObjectHideFlags: 0
@@ -1642,7 +1642,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &569068577
 RectTransform:
   m_ObjectHideFlags: 0
@@ -4976,7 +4976,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1971238482
 RectTransform:
   m_ObjectHideFlags: 0
