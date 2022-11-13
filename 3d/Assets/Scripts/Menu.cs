@@ -39,11 +39,15 @@ public class Menu : MonoBehaviour
         // timer to zero
         this.playBtnClickSound();
         Timer.timeValue = Timer.startTimeValue;
+        // not loading from save
+        SaveSystem.LOAD_FROM_SAVE = false;
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
     }
 
     public void ResumeGame(){
         if(SaveSystem.TimeSaved()){
+            // loading from save
+            SaveSystem.LOAD_FROM_SAVE = true;
             // there was a time saved
             // resume old game
             this.playBtnClickSound();
