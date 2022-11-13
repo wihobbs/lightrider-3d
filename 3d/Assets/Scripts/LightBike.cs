@@ -76,6 +76,9 @@ public class LightBike : MonoBehaviour
     public AudioClip deathSound;
     public AudioSource decelSound;
     AudioSource audioSrc;
+
+    // something to recognize player 1 from player 2
+    public int PLAYER_NUMBER;
     
     // Start is called before the first frame update\
     void Start()
