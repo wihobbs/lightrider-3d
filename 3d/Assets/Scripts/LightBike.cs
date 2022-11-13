@@ -120,6 +120,7 @@ public class LightBike : MonoBehaviour
             savedPosition.x = savedData.position[0];
             savedPosition.y = savedData.position[1];
             savedPosition.z = savedData.position[2];
+            this.otherPlayerElimText.text = savedData.otherPlayerElimCount.ToString();
 
             this.transform.position = savedPosition;
         }
