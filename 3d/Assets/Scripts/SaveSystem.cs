@@ -56,6 +56,7 @@ public static class SaveSystem
         FileStream stream = new FileStream(path,FileMode.Create);
         PlayerData data = new PlayerData(player);
         formatter.Serialize(stream,data);
+        stream.Close();
     }
     public static PlayerData LoadPlayer(int playerNum){
         string path;
