@@ -8,7 +8,8 @@ using TMPro;
 public class PauseMenu : MonoBehaviour
 {
     // starting time of timer
-    public static float startTimeValue =5f;
+    // 5 minute rounds
+    public static float startTimeValue =60f * 5f;
     // elapsed time of timer
     public static float timeValue = startTimeValue; 
     [SerializeField] Text timeText;
@@ -40,6 +41,7 @@ public class PauseMenu : MonoBehaviour
     }
 
     public void SetInactiveSavedData(){
+        Debug.Log("HERE");
         this.SavedDataText.SetActive(false);
         this.toasting = false;
     }
@@ -47,6 +49,7 @@ public class PauseMenu : MonoBehaviour
     public void ShowToastSavedData(){
         this.SavedDataText.SetActive(true);
         if(!this.toasting){
+            Debug.Log("not toasting");
             Invoke("SetInactiveSavedData",2.5f);
         }
         this.toasting = true;
@@ -72,19 +75,19 @@ public class PauseMenu : MonoBehaviour
                 // do something to make the players stressed like change color 
                 timeText.color = Color.red;
             }
+            // display time if time present
+            this.DisplayTime(timeValue);
         }
         else{
-            // to do:
+            // no time left
             // show timeup
             if(!this.checkForTie()){
                 this.TimeUp();
                 this.gameOver = true;
             }
-            
-            // lock the time value to zero
-            timeValue = 0;
+            // change timer text to "SUDDEN DEATH"
+            this.timeText.text = "SUDDEN DEATH";
         }
-        this.DisplayTime(timeValue);
     }
 
     public void Resume(){
@@ -138,9 +141,9 @@ public class PauseMenu : MonoBehaviour
         string endText = "GAME OVER\n";
         endText += this.playerOneElimText.text + ":" + this.playerTwoElimText.text + "\n";
         if(int.Parse(this.playerOneElimText.text) > int.Parse(this.playerTwoElimText.text)){
-            endText += "PLAYER ONE WINS!";
+            endText += "BLUE PLAYER WINS!";
         }else{
-            endText += "PLAYER TWO WINS!";
+            endText += "RED PLAYER WINS!";
         }
         this.timeUpText.text = endText;
         timerUi.SetActive(false);
