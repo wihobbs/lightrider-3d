@@ -22,6 +22,22 @@ public static class SaveSystem
         stream.Close();
     }
 
+    public static void DeleteSave(){
+        string timePath = Application.persistentDataPath + "/time.bindata";
+        string player1Path = Application.persistentDataPath + "/player1.bindata";
+        string player2Path = Application.persistentDataPath + "/player2.bindata";
+
+        if(File.Exists(timePath)){
+            File.Delete(timePath);
+        }
+        if(File.Exists(player1Path)){
+            File.Delete(player1Path);
+        }
+        if(File.Exists(player2Path)){
+            File.Delete(player2Path);
+        }
+    }
+
     public static TimerData LoadTime(){
         string path = Application.persistentDataPath + "/time.bindata";
         Debug.Log(path);

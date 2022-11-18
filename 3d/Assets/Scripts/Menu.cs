@@ -42,6 +42,7 @@ public class Menu : MonoBehaviour
         this.playBtnClickSound();
         // not loading from save
         SaveSystem.LOAD_FROM_SAVE = false;
+        SaveSystem.DeleteSave();
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
     }
 

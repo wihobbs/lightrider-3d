@@ -76,6 +76,7 @@ public class LightBike : MonoBehaviour
     public AudioSource worldAudioSrc;
     public AudioClip deathSound;
     public AudioSource decelSound;
+    public AudioSource spawnSound;
     AudioSource audioSrc;
 
     // something to recognize player 1 from player 2
@@ -235,6 +236,7 @@ public class LightBike : MonoBehaviour
 
     void Respawn()
     {
+        this.spawnSound.Play();
         gameObject.SetActive(true);
         gameObject.transform.position = respawn.position;
 

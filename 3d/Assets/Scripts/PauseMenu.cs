@@ -9,7 +9,7 @@ public class PauseMenu : MonoBehaviour
 {
     // starting time of timer
     // 5 minute rounds
-    const float startTimeValue = 60*5f;
+    const float startTimeValue = 5*60f;
     // elapsed time of timer
     public static float timeValue = startTimeValue; 
     [SerializeField] Text timeText;
@@ -38,6 +38,7 @@ public class PauseMenu : MonoBehaviour
 
     // on start
     void Start(){
+        Time.timeScale = 1f;
         if(SaveSystem.LOAD_FROM_SAVE){
             TimerData data = SaveSystem.LoadTime();
             timeValue = data.timeValue;
@@ -92,6 +93,7 @@ public class PauseMenu : MonoBehaviour
             // show timeup
             if(!this.checkForTie()){
                 this.TimeUp();
+                SaveSystem.DeleteSave();
                 this.gameOver = true;
             }
             // change timer text to "SUDDEN DEATH"
