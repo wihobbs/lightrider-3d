@@ -40,7 +40,6 @@ public class Menu : MonoBehaviour
         // play new game
         // timer to zero
         this.playBtnClickSound();
-        Timer.timeValue = Timer.startTimeValue;
         // not loading from save
         SaveSystem.LOAD_FROM_SAVE = false;
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);

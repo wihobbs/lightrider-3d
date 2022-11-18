@@ -9,7 +9,7 @@ public class PauseMenu : MonoBehaviour
 {
     // starting time of timer
     // 5 minute rounds
-    public static float startTimeValue =60f * 5f;
+    const float startTimeValue = 60*5f;
     // elapsed time of timer
     public static float timeValue = startTimeValue; 
     [SerializeField] Text timeText;
@@ -36,12 +36,21 @@ public class PauseMenu : MonoBehaviour
 
     [SerializeField] List<GameObject> playerObjects = new List<GameObject>();
 
+    // on start
+    void Start(){
+        if(SaveSystem.LOAD_FROM_SAVE){
+            TimerData data = SaveSystem.LoadTime();
+            timeValue = data.timeValue;
+        }else{
+            timeValue = startTimeValue;
+        }
+    }
+
     public void playBtnClickSound(){
         this.btnClickSound.Play();
     }
 
     public void SetInactiveSavedData(){
-        Debug.Log("HERE");
         this.SavedDataText.SetActive(false);
         this.toasting = false;
     }
