@@ -46,6 +46,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   destroyTime: 15
+  parent: {fileID: 0}
 --- !u!1 &4364471615221198131
 GameObject:
   m_ObjectHideFlags: 0
@@ -157,3 +158,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   destroyTime: 12
+  parent: {fileID: 0}

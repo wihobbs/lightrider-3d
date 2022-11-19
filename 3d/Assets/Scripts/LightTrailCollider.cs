@@ -11,13 +11,4 @@ public class LightTrailCollider : MonoBehaviour
     {
         Destroy(gameObject, destroyTime);
     }
-
-    // Update is called once per frame
-    void Update()
-    {
-        if (parent != null && !parent.gameObject.activeSelf)
-        {
-            Destroy(gameObject);
-        }
-    }
 }

@@ -57,6 +57,7 @@ public class LightBike : MonoBehaviour
     private float accumulatedSize = 0;
     public GameObject explosion;
     public GameObject trail;
+    private GameObject trailInstance;
     public Transform respawn;
     public GameObject thisPlayer;
     
@@ -85,9 +86,10 @@ public class LightBike : MonoBehaviour
     // elims for other player
     public TMP_Text otherPlayerElimText;
     
-    // Start is called before the first frame update\
+    // Start is called before the first frame update
     void Start()
     {
+
         rb = GetComponent<Rigidbody>();
         audioSrc = GetComponent<AudioSource>();
         cameraAxis = transform.Find("cameraAxis").gameObject;
@@ -102,6 +104,8 @@ public class LightBike : MonoBehaviour
         foreach(MeshMaterialPair m in lights){
             //m.mr.materials[m.mat].color = lightColor;
         }
+        this.trailInstance = Instantiate(trail, transform.position, transform.rotation);
+        trailInstance.transform.parent = this.transform;
         // if load from save, load now
         if(SaveSystem.LOAD_FROM_SAVE){
             Debug.Log("LOADING FROM SAVE");
@@ -216,16 +220,17 @@ public class LightBike : MonoBehaviour
         {
 
             Instantiate(explosion, transform.position, Quaternion.identity);
-            //trail.transform.parent = null;
-            //Destroy(trail, 15f);
+            this.trailInstance.transform.parent = null;
+            Destroy(this.trailInstance, 15f);
             //Destroy(cameraAxis, 2f);
-            Invoke("Respawn", 2f);
-            audioSrc.pitch = 0f;
             gameObject.SetActive(false);
+            Invoke("Respawn", 2f);
+
+            audioSrc.pitch = 0f;
             // play sound
             worldAudioSrc.PlayOneShot(deathSound, 1f);
-            Debug.Log("DIE");
 
+            Destroy(collision.gameObject,0.1f);
 
             // give other player an elim
             int otherPlayerElimCount = int.Parse(this.otherPlayerElimText.text);
@@ -236,9 +241,13 @@ public class LightBike : MonoBehaviour
 
     void Respawn()
     {
+
         this.spawnSound.Play();
-        gameObject.SetActive(true);
         gameObject.transform.position = respawn.position;
+        gameObject.SetActive(true);
+
+        this.trailInstance = Instantiate(trail, transform.position, transform.rotation);
+        this.trailInstance.transform.parent = this.transform;
 
         Debug.Log("respawned!");
     }
