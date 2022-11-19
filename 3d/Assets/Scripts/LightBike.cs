@@ -12,6 +12,8 @@ public class LightBike : MonoBehaviour
         public int mat;
     }
 
+    public GameObject isInvincibleText;
+
     public LightBikeWheel[] F;
     public LightBikeWheel[] R;
 
@@ -245,11 +247,13 @@ public class LightBike : MonoBehaviour
 
     void isInvincibleFalse(){
         isInvincible = false;
+        this.isInvincibleText.SetActive(false);
     }
 
     void Respawn()
     {
         isInvincible = true;
+        this.isInvincibleText.SetActive(true);
         Invoke("isInvincibleFalse",5f);
         this.spawnSound.Play();
         gameObject.transform.position = respawn.position;
