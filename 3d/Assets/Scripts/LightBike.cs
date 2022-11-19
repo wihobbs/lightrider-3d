@@ -84,6 +84,9 @@ public class LightBike : MonoBehaviour
 
     // elims for other player
     public TMP_Text otherPlayerElimText;
+
+    public bool isInvincible = false;
+    public GameObject invincibleText;
     
     // Start is called before the first frame update\
     void Start()
@@ -212,7 +215,7 @@ public class LightBike : MonoBehaviour
     }
 
     void OnTriggerEnter(Collider collision){
-        if (collision.gameObject.tag == "LightTrail")
+        if (collision.gameObject.tag == "LightTrail" && !this.isInvincible)
         {
 
             Instantiate(explosion, transform.position, Quaternion.identity);
@@ -234,8 +237,16 @@ public class LightBike : MonoBehaviour
         }
     }
 
+    void EndInvincible(){
+        this.isInvincible = false;
+        this.invincibleText.SetActive(false);
+    }
+
     void Respawn()
     {
+        this.isInvincible = true;
+        this.invincibleText.SetActive(true);
+        Invoke("EndInvincible",5f);
         this.spawnSound.Play();
         gameObject.SetActive(true);
         gameObject.transform.position = respawn.position;
