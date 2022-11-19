@@ -85,11 +85,12 @@ public class LightBike : MonoBehaviour
 
     // elims for other player
     public TMP_Text otherPlayerElimText;
+
+    public bool isInvincible = false;
     
     // Start is called before the first frame update
     void Start()
     {
-
         rb = GetComponent<Rigidbody>();
         audioSrc = GetComponent<AudioSource>();
         cameraAxis = transform.Find("cameraAxis").gameObject;
@@ -102,7 +103,7 @@ public class LightBike : MonoBehaviour
         prevRotation = Quaternion.identity;
 
         foreach(MeshMaterialPair m in lights){
-            //m.mr.materials[m.mat].color = lightColor;
+            m.mr.materials[m.mat].color = lightColor;
         }
         this.trailInstance = Instantiate(trail, transform.position, transform.rotation);
         trailInstance.transform.parent = this.transform;
@@ -216,6 +217,9 @@ public class LightBike : MonoBehaviour
     }
 
     void OnTriggerEnter(Collider collision){
+        if(isInvincible){
+            return;
+        }
         if (collision.gameObject.tag == "LightTrail")
         {
 
@@ -239,9 +243,14 @@ public class LightBike : MonoBehaviour
         }
     }
 
+    void isInvincibleFalse(){
+        isInvincible = false;
+    }
+
     void Respawn()
     {
-
+        isInvincible = true;
+        Invoke("isInvincibleFalse",5f);
         this.spawnSound.Play();
         gameObject.transform.position = respawn.position;
         gameObject.SetActive(true);
