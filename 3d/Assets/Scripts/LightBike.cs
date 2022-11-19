@@ -58,8 +58,8 @@ public class LightBike : MonoBehaviour
     private int tracker = 0;
     private float accumulatedSize = 0;
     public GameObject explosion;
-    public GameObject trail;
-    private GameObject trailInstance;
+    public LightTrail trail;
+    private LightTrail trailInstance;
     public Transform respawn;
     public GameObject thisPlayer;
     
@@ -93,6 +93,7 @@ public class LightBike : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+
         rb = GetComponent<Rigidbody>();
         audioSrc = GetComponent<AudioSource>();
         cameraAxis = transform.Find("cameraAxis").gameObject;
@@ -104,11 +105,10 @@ public class LightBike : MonoBehaviour
         accumulatedSize = 0;
         prevRotation = Quaternion.identity;
 
-        foreach(MeshMaterialPair m in lights){
-            m.mr.materials[m.mat].color = lightColor;
-        }
         this.trailInstance = Instantiate(trail, transform.position, transform.rotation);
         trailInstance.transform.parent = this.transform;
+        trailInstance.lightColor = lightColor;
+
         // if load from save, load now
         if(SaveSystem.LOAD_FROM_SAVE){
             Debug.Log("LOADING FROM SAVE");
@@ -137,6 +137,9 @@ public class LightBike : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        foreach(MeshMaterialPair m in lights){
+            m.mr.materials[m.mat].color = lightColor;
+        }
         float tempSteerBackToCenter = Mathf.Abs(Input.GetAxis(horizontalAxisName)) < Mathf.Abs(currentSteer) ? 1f : 0f;
         currentSteer = Mathf.Lerp(currentSteer, Input.GetAxis(horizontalAxisName) * (1 - speedCompensation * Mathf.Pow(Mathf.Clamp(rb.velocity.magnitude * 0.025f, 0f, 1f), 0.4f)),
             (steerLerpRate + Mathf.Lerp(0, 2, tempSteerBackToCenter)) * Time.deltaTime);
@@ -261,6 +264,7 @@ public class LightBike : MonoBehaviour
 
         this.trailInstance = Instantiate(trail, transform.position, transform.rotation);
         this.trailInstance.transform.parent = this.transform;
+        this.trailInstance.lightColor = lightColor;
 
         Debug.Log("respawned!");
     }
