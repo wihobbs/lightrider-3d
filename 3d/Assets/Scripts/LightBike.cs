@@ -250,6 +250,7 @@ public class LightBike : MonoBehaviour
         this.spawnSound.Play();
         gameObject.SetActive(true);
         gameObject.transform.position = respawn.position;
+        gameObject.transform.rotation= respawn.rotation;
 
         Debug.Log("respawned!");
     }
