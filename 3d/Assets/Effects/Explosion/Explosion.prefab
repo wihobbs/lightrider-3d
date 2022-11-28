@@ -43,7 +43,7 @@ VisualEffect:
   m_GameObject: {fileID: 4245210838280974974}
   m_Enabled: 1
   m_Asset: {fileID: 8926484042661614526, guid: 853c5ef8d3514be4aab2e3d4a987afc8, type: 3}
-  m_InitialEventName: OnPlay
+  m_InitialEventName: OnPlay2
   m_InitialEventNameOverriden: 0
   m_StartSeed: 0
   m_ResetSeedOnPlay: 1
@@ -124,3 +124,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   destroyTime: 4
+  parent: {fileID: 0}
