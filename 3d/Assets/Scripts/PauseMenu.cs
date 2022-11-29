@@ -26,6 +26,7 @@ public class PauseMenu : MonoBehaviour
     public GameObject pauseMenuUI;
 
     public AudioSource btnClickSound;
+    public AudioSource btnSaveGameSound;
 
     public GameObject SavedDataText;
 
@@ -36,19 +37,33 @@ public class PauseMenu : MonoBehaviour
 
     [SerializeField] List<GameObject> playerObjects = new List<GameObject>();
 
+    public AudioSource resumeSound;
+
+    [SerializeField] GameObject gameWasResumedText;
+
     // on start
     void Start(){
         Time.timeScale = 1f;
         if(SaveSystem.LOAD_FROM_SAVE){
             TimerData data = SaveSystem.LoadTime();
             timeValue = data.timeValue;
+            this.gameWasResumedText.SetActive(true);
+            Invoke("HideResumedGameText",2F);
+            // play resume sound
+            this.resumeSound.Play();
         }else{
             timeValue = startTimeValue;
         }
     }
+    public void HideResumedGameText(){
+        this.gameWasResumedText.SetActive(false);
+    }
 
     public void playBtnClickSound(){
         this.btnClickSound.Play();
+    }
+    public void playBtnSaveGameSound(){
+        this.btnSaveGameSound.Play();
     }
 
     public void SetInactiveSavedData(){

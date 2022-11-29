@@ -77,7 +77,7 @@ public class LightBike : MonoBehaviour
     public AudioClip deathSound;
     public AudioSource decelSound;
     public AudioSource spawnSound;
-    AudioSource audioSrc;
+    public AudioSource audioSrc;
 
     // something to recognize player 1 from player 2
     public int PLAYER_NUMBER;
@@ -87,7 +87,7 @@ public class LightBike : MonoBehaviour
 
     public bool isInvincible = false;
     public GameObject invincibleText;
-    
+
     // Start is called before the first frame update\
     void Start()
     {
@@ -107,6 +107,9 @@ public class LightBike : MonoBehaviour
         }
         // if load from save, load now
         if(SaveSystem.LOAD_FROM_SAVE){
+            this.isInvincible = true;
+            this.invincibleText.SetActive(true);
+            Invoke("EndInvincible",5f);
             Debug.Log("LOADING FROM SAVE");
             Vector3 savedPosition;
             PlayerData savedData;
@@ -231,6 +234,8 @@ public class LightBike : MonoBehaviour
 
 
             // give other player an elim
+
+            // fix lots of updates
             int otherPlayerElimCount = int.Parse(this.otherPlayerElimText.text);
             otherPlayerElimCount += 1;
             this.otherPlayerElimText.text = otherPlayerElimCount.ToString();
