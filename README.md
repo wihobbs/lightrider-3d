@@ -1,11 +1,2 @@
-# LightRider, a 3D game
-
-
-TO RUN (LINUX):
-Go into the `3d` directory and run `LightRiderGame.x86_64`.
-
-TO RUN (WINDOWS):
-[TO DO]
-
-Game Trailer: 
-https://youtu.be/84hcVbE9z_k
+TO RUN:
+Go into the folder '3d' and then into 'BUILD_WINDOWS_FINAL'. This is the folder for the Windows Build.
